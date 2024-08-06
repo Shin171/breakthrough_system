@@ -5,18 +5,22 @@
 
 @model breakthrough.Models.User
 <div>
+    <h2> Log in your account</h2>
     <br/>
 </div>
 <form asp-action="Login" method="post">
-    <label>Email:</label>
-    <input type="email" name="Email" required />
-    <br />
-
-    <label>Password:</label>
-    <input type="password" name="Password" required />
-    <br />
-
-    <button type="submit">Login</button>
+    <div class="form-floating mb-3">
+        <input id="floatingInput" class="form-control" type="email" name="Email" placeholder="Enter Email" required />
+        <label for="floatingInput">Email Address</label>
+        <br />
+    </div>
+    <div class="form-floating mb-3">
+        <input id="floatingPassword" class="form-control" type="password" name="Password" placeholder="Enter Password" required />
+        <label for="floatingPassword">Password </label>
+        <br />
+    </div>
+    <button class="btn btn-primary btn-md" type="submit">Login</button>
+    <button type="button" class="btn btn-link">Link</button>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 </form>
 <div>

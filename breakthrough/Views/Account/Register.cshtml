@@ -9,37 +9,32 @@
 </div>
 <form asp-action="Register" method="post">
     <label>Name:</label>
-    <input type="text" name="Name" required />
-    <br />
+    <input class="form-control" type="text" name="Name" placeholder="Enter Fullname" required />
 
     <label>Birthdate:</label>
-    <input type="date" name="Birthdate" required />
-    <br />
+    <input class="form-control" type="date" name="Birthdate"  required />
 
     <label>Phone Number:</label>
-    <input type="text" name="PhoneNumber" required />
-    <br />
+    <input class="form-control" type="text" name="PhoneNumber" placeholder="Enter Phone number" required />
 
     <label>Email:</label>
-    <input type="email" name="Email" required />
-    <br />
-
+    <input class="form-control" type="email" name="Email" placeholder="Enter email" required />
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <br/>
     <label>Password:</label>
-    <input type="password" name="Password" required />
-    <br />
+    <input class="form-control" type="password" name="Password" placeholder="Enter Password"required />
 
     <label>Confirm Password:</label>
-    <input type="password" name="ConfirmPassword" required />
-    <br />
+    <input class="form-control" type="password" name="ConfirmPassword" placeholder="Confirm Password" required />
 
     <label>Role:</label>
-    <select name="Role" required>
+    <select class="form-label mt-4" name="Role" required>
         <option value="Leader">Leader</option>
         <option value="Member">Member</option>
     </select>
-    <br />
 
-    <button type="submit">Register</button>
+
+    <button class="btn btn-primary btn-md" type="submit">Register</button>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 </form>
 <div>
