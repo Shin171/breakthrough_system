@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+@model breakthrough.Models.User
+<div>
+    <br />
+</div>
+<form asp-action="Register" method="post">
+    <label>Name:</label>
+    <input type="text" name="Name" required />
+    <br />
+
+    <label>Birthdate:</label>
+    <input type="date" name="Birthdate" required />
+    <br />
+
+    <label>Phone Number:</label>
+    <input type="text" name="PhoneNumber" required />
+    <br />
+
+    <label>Email:</label>
+    <input type="email" name="Email" required />
+    <br />
+
+    <label>Password:</label>
+    <input type="password" name="Password" required />
+    <br />
+
+    <label>Confirm Password:</label>
+    <input type="password" name="ConfirmPassword" required />
+    <br />
+
+    <label>Role:</label>
+    <select name="Role" required>
+        <option value="Leader">Leader</option>
+        <option value="Member">Member</option>
+    </select>
+    <br />
+
+    <button type="submit">Register</button>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+</form>
+<div>
+    <br />
+</div>
+

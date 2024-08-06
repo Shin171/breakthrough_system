@@ -1,0 +1,171 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dende\\source\\repos\\webMVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|C:\\Users\\dende\\source\\repos\\webMVC\\webmvc\\models\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\models\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|c:\\users\\dende\\source\\repos\\webmvc\\webmvc\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|C:\\Users\\dende\\source\\repos\\webMVC\\webmvc\\views\\tasks\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\views\\tasks\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|C:\\Users\\dende\\source\\repos\\webMVC\\webmvc\\views\\tasks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\views\\tasks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|C:\\Users\\dende\\source\\repos\\webMVC\\webmvc\\views\\tasks\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\views\\tasks\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|C:\\Users\\dende\\source\\repos\\webMVC\\webmvc\\views\\tasks\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\views\\tasks\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|C:\\Users\\dende\\source\\repos\\webMVC\\webmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|C:\\Users\\dende\\source\\repos\\webMVC\\webmvc\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|C:\\Users\\dende\\source\\repos\\webMVC\\webmvc\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B047F96B-B6F0-4264-8398-BA6146511A32}|webMVC\\webMVC.csproj|solutionrelative:webmvc\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Tasks\\Delete.cshtml",
+              "RelativeDocumentMoniker": "webMVC\\Views\\Tasks\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Tasks\\Delete.cshtml",
+              "RelativeToolTip": "webMVC\\Views\\Tasks\\Delete.cshtml",
+              "ViewState": "AQIAAAUAAAAAAAAAAADwvyIAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-08T01:25:13.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Tasks\\Edit.cshtml",
+              "RelativeDocumentMoniker": "webMVC\\Views\\Tasks\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Tasks\\Edit.cshtml",
+              "RelativeToolTip": "webMVC\\Views\\Tasks\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-08T01:19:55.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "webMVC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "webMVC\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-08T01:13:03.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Tasks\\Create.cshtml",
+              "RelativeDocumentMoniker": "webMVC\\Views\\Tasks\\Create.cshtml",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Tasks\\Create.cshtml",
+              "RelativeToolTip": "webMVC\\Views\\Tasks\\Create.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-08T00:38:14.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Tasks\\Index.cshtml",
+              "RelativeDocumentMoniker": "webMVC\\Views\\Tasks\\Index.cshtml",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Views\\Tasks\\Index.cshtml",
+              "RelativeToolTip": "webMVC\\Views\\Tasks\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-08T00:36:19.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaskController.cs",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Controllers\\TaskController.cs",
+              "RelativeDocumentMoniker": "webMVC\\Controllers\\TaskController.cs",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Controllers\\TaskController.cs",
+              "RelativeToolTip": "webMVC\\Controllers\\TaskController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T00:29:20.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaskRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Models\\TaskRepository.cs",
+              "RelativeDocumentMoniker": "webMVC\\Models\\TaskRepository.cs",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Models\\TaskRepository.cs",
+              "RelativeToolTip": "webMVC\\Models\\TaskRepository.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAYwGQAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T00:21:22.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Task.cs",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Models\\Task.cs",
+              "RelativeDocumentMoniker": "webMVC\\Models\\Task.cs",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Models\\Task.cs",
+              "RelativeToolTip": "webMVC\\Models\\Task.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T00:11:59.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Web.config",
+              "RelativeDocumentMoniker": "webMVC\\Web.config",
+              "ToolTip": "C:\\Users\\dende\\source\\repos\\webMVC\\webMVC\\Web.config",
+              "RelativeToolTip": "webMVC\\Web.config",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAEgAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-07-07T15:58:02.947Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

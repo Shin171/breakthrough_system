@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+@model breakthrough.Models.User
+<div>
+    <br/>
+</div>
+<form asp-action="Login" method="post">
+    <label>Email:</label>
+    <input type="email" name="Email" required />
+    <br />
+
+    <label>Password:</label>
+    <input type="password" name="Password" required />
+    <br />
+
+    <button type="submit">Login</button>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+</form>
+<div>
+    <br />
+</div>
+
