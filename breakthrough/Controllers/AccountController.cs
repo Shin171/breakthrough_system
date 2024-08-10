@@ -143,5 +143,10 @@ namespace breakthrough.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
+            return View();
+        }
+
     }
 }
