@@ -240,6 +240,10 @@
     <Content Include="Views\Account\DiscipleDashboard.cshtml" />
     <Content Include="Views\LeadersQuiz\Create.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,111 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Breakthrough Church System</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/bootstrap-lumen.css")
     @Scripts.Render("~/bundles/modernizr")
-    <style>
-        /* Add your custom styles here */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #e9ecef;
-            margin: 0;
-        }
-
-        .navbar {
-            background-color: #508C9B;
-            margin-bottom: 20px;
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
-            display: flex;
-            color: #EEEEEE;
-            align-items: center;
-            text-decoration: none;
-        }
-
-            .navbar-brand:hover {
-                color: #EEEEEE;
-            }
-
-            .navbar-brand img {
-                max-height: 40px;
-                margin-right: 10px;
-            }
-
-        .navbar-nav .nav-link {
-            color: #f8f9fa;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-            .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
-                background-color: #495057;
-                color: #f8f9fa;
-            }
-
-        .body-content {
-            padding: 20px;
-            background-color: #fdfdfe;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #495057;
-            color: #f8f9fa;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        #container {
-            position: relative;
-        }
-    </style>
-    <script>
-        // JavaScript to handle active class toggle
-        document.addEventListener('DOMContentLoaded', function () {
-            const currentLocation = window.location.href;
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            navLinks.forEach(link => {
-                if (link.href === currentLocation) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
-                <img src="images/bcfLogo.jpg" alt="" />
                 Breakthrough Church System
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "") })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Contact" ? "active" : "") })
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
-                            @Html.ActionLink("Dashboard", "Dashboard", "Account", new { area = "" }, new { @class = "nav-link" })
+                            @Html.ActionLink("Dashboard", "Dashboard", "Account", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Dashboard" ? "active" : "") })
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })
@@ -117,10 +41,10 @@
                     else
                     {
                         <li class="nav-item">
-                            @Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "nav-link" })
+                            @Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Register" ? "active" : "") })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "nav-link" })
+                            @Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Login" ? "active" : "") })
                         </li>
                     }
                 </ul>
