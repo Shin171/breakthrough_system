@@ -131,129 +131,6 @@ namespace breakthrough.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult ForgotPassword()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult ForgotPassword(ForgotPasswordViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                string resetToken = Guid.NewGuid().ToString();
-                DateTime tokenExpiration = DateTime.UtcNow.AddHours(24);
-
-                using (var connection = new MySqlConnection(_dbConnection))
-                {
-                    string updateQuery = "UPDATE accounts SET PasswordResetToken = @Token, PasswordResetTokenExpiration = @Expiration WHERE Email = @Email";
-                    using (var cmd = new MySqlCommand(updateQuery, connection))
-                    {
-                        connection.Open();
-                        cmd.Parameters.AddWithValue("@Token", resetToken);
-                        cmd.Parameters.AddWithValue("@Expiration", tokenExpiration);
-                        cmd.Parameters.AddWithValue("@Email", model.Email);
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        connection.Close();
-
-                        if (rowsAffected > 0)
-                        {
-                            SendPasswordResetEmail(model.Email, resetToken);
-                            return RedirectToAction("ForgotPasswordConfirmation");
-                        }
-                    }
-                }
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
-
-        [NonAction]
-        private void SendPasswordResetEmail(string email, string token)
-        {
-            string resetLink = Url.Action("ResetPassword", "Account", new { email = email, token = token }, protocol: Request.Url.Scheme);
-
-            string subject = "Reset Your Password";
-            string body = $"Please reset your password by clicking here: <a href='{resetLink}'>Reset Password</a>";
-
-            using (var smtpClient = new SmtpClient("your-smtp-server.com", 587))
-            {
-                smtpClient.Credentials = new NetworkCredential("your-email@example.com", "your-password");
-                smtpClient.EnableSsl = true;
-
-                using (var mailMessage = new MailMessage("your-email@example.com", email))
-                {
-                    mailMessage.Subject = subject;
-                    mailMessage.Body = body;
-                    mailMessage.IsBodyHtml = true;
-
-                    smtpClient.Send(mailMessage);
-                }
-            }
-        }
-
-        [HttpGet]
-        public ActionResult ResetPassword(string email, string token)
-        {
-            var model = new ResetPasswordViewModel { Email = email, Token = token };
-            return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ResetPassword(ResetPasswordViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                using (var connection = new MySqlConnection(_dbConnection))
-                {
-                    string query = "SELECT * FROM accounts WHERE Email = @Email AND PasswordResetToken = @Token AND PasswordResetTokenExpiration > @Now";
-                    using (var cmd = new MySqlCommand(query, connection))
-                    {
-                        connection.Open();
-                        cmd.Parameters.AddWithValue("@Email", model.Email);
-                        cmd.Parameters.AddWithValue("@Token", model.Token);
-                        cmd.Parameters.AddWithValue("@Now", DateTime.UtcNow);
-
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                reader.Close();
-                                string updateQuery = "UPDATE accounts SET Password = @Password, PasswordResetToken = NULL, PasswordResetTokenExpiration = NULL WHERE Email = @Email";
-                                using (var updateCmd = new MySqlCommand(updateQuery, connection))
-                                {
-                                    updateCmd.Parameters.AddWithValue("@Password", HashPassword(model.Password));
-                                    updateCmd.Parameters.AddWithValue("@Email", model.Email);
-
-                                    updateCmd.ExecuteNonQuery();
-                                }
-
-                                return RedirectToAction("ResetPasswordConfirmation");
-                            }
-                        }
-                        connection.Close();
-                    }
-                }
-            }
-
-            return View(model);
-        }
-
-        [HttpGet]
-        public ActionResult ForgotPasswordConfirmation()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult ResetPasswordConfirmation()
-        {
-            return View();
-        }
 
         private string HashPassword(string password)
         {
@@ -269,7 +146,8 @@ namespace breakthrough.Controllers
             }
         }
 
-        public ActionResult Logout()
+        [HttpGet]
+        public ActionResult ForgotPassword()
         {
             return View();
         }
