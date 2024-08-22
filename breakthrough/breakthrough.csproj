@@ -172,8 +172,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DiscipleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\LeaderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,15 +236,24 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\LeaderDashboard.cshtml" />
-    <Content Include="Views\Account\DiscipleDashboard.cshtml" />
-    <Content Include="Views\LeadersQuiz\Create.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Shared\DiscipleLayout.cshtml" />
+    <Content Include="Views\Shared\LeaderLayout.cshtml" />
+    <Content Include="Views\Disciple\Dashboard.cshtml" />
+    <Content Include="Views\Disciple\Activities.cshtml" />
+    <Content Include="Views\Disciple\Calendar.cshtml" />
+    <Content Include="Views\Disciple\Notifications.cshtml" />
+    <Content Include="Views\Disciple\Settings.cshtml" />
+    <Content Include="Views\Leader\Activities.cshtml" />
+    <Content Include="Views\Leader\Calendar.cshtml" />
+    <Content Include="Views\Leader\Dashboard.cshtml" />
+    <Content Include="Views\Leader\Settings.cshtml" />
+    <Content Include="Views\Leader\Notifications.cshtml" />
+    <Content Include="Views\Leader\Logout.cshtml" />
+    <Content Include="Views\Disciple\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DiscipleQuiz\" />
-    <Folder Include="Views\Manage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
