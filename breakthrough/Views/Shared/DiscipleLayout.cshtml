@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.UI.WebControls
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -31,11 +32,16 @@
                     <li class="nav-item">
                         @Html.ActionLink("Notifications", "Notifications", "Disciple", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Notifications" ? "active" : "") })
                     </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About","About","Disciple", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
+                    </li>
                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
                         <div class="dropdown-menu">
-                            @Html.ActionLink("About","About","Home", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                        @Html.ActionLink("Settings", "Settings", "Disciple", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Settings" ? "active" : "") })
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

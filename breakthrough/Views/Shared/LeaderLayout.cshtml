@@ -2,12 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>@ViewBag.Title - Breakthrough Church System</title>
     @Styles.Render("~/Content/bootstrap-lumen.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg bg-primary clearfix" data-bs-theme="dark">
         <div class="container-fluid">
@@ -31,12 +30,26 @@
                     <li class="nav-item">
                         @Html.ActionLink("Notifications", "Notifications", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Notifications" ? "active" : "") })
                     </li>
-                    <li class="nav-item dropdown">
-                        <div class="dropdown-menu">
-                            @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
-                        </div>
-                        @Html.ActionLink("Settings", "Settings", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Settings" ? "active" : "") })
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "About", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
+                            <li>@Html.ActionLink("My Profile", "Profile", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Activities History", "ActivitiesHistory", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Events", "Events", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Calendar", "Calendar", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <form class="d-flex">
+                        <input class="form-control me-sm-2" type="search" placeholder="Search">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     @if (User.Identity.IsAuthenticated)
@@ -71,7 +84,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
-
-
-

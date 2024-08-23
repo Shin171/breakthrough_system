@@ -29,12 +29,32 @@ namespace breakthrough.Controllers
             return View();
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
         public ActionResult Settings()
         {
             return View();
         }
 
         public ActionResult Logout()
+        {
+            return View();
+        }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
+        public ActionResult Events()
+        {
+            return View();
+        }
+
+        public ActionResult ActivitiesHistory()
         {
             return View();
         }

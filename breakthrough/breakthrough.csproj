@@ -251,6 +251,11 @@
     <Content Include="Views\Leader\Notifications.cshtml" />
     <Content Include="Views\Leader\Logout.cshtml" />
     <Content Include="Views\Disciple\Logout.cshtml" />
+    <Content Include="Views\Disciple\About.cshtml" />
+    <Content Include="Views\Leader\About.cshtml" />
+    <Content Include="Views\Leader\Profile.cshtml" />
+    <Content Include="Views\Leader\Events.cshtml" />
+    <Content Include="Views\Leader\ActivitiesHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
