@@ -11,6 +11,7 @@
     <nav class="navbar navbar-expand-lg bg-primary clearfix" data-bs-theme="dark">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
+                <img src="~/images/bcfLogo.jpg" alt="Church Logo" class="mr-3" style="height: 50px;"/>
                 Breakthrough Church System
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,27 +47,12 @@
                             <li>@Html.ActionLink("Logout", "Logout", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
                     <form class="d-flex">
                         <input class="form-control me-sm-2" type="search" placeholder="Search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            @Html.ActionLink("Logout", "Logout", "Leader", new { area = "" }, new { @class = "nav-link " })
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item">
-                            @Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Register" ? "active" : "") })
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Login" ? "active" : "") })
-                        </li>
-                    }
                 </ul>
             </div>
         </div>
