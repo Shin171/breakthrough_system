@@ -97,7 +97,6 @@ namespace breakthrough.Controllers
                     {
                         cmd.Parameters.AddWithValue("@Email", model.Email);
                         cmd.Parameters.AddWithValue("@Password", HashPassword(model.Password));
-                        FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
 
                         connection.Open();
                         using (var reader = cmd.ExecuteReader())
