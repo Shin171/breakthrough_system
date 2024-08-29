@@ -50,14 +50,14 @@ namespace breakthrough.Controllers
 
                         if (emailCount > 0)
                         {
-                            ModelState.AddModelError("", "The email address is already in use. Please try an alternative!");
+                            ModelState.AddModelError("", "The email address is already in use.");
                             return View(model);
                         }
                     }
 
                     model.Password = HashPassword(model.Password);
 
-                    string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password, Role) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password, @Role)";
+                    string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password, Role, AcceptPolicy) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password, @Role, @AcceptPolicy)";
                     using (var insertCmd = new MySqlCommand(insertQuery, connection))
                     {
                         connection.Open();
@@ -67,6 +67,7 @@ namespace breakthrough.Controllers
                         insertCmd.Parameters.AddWithValue("@Email", model.Email);
                         insertCmd.Parameters.AddWithValue("@Password", model.Password);
                         insertCmd.Parameters.AddWithValue("@Role", model.Role);
+                        insertCmd.Parameters.AddWithValue("@AcceptPolicy", model.AcceptPolicy);
 
                         insertCmd.ExecuteNonQuery();
                         connection.Close();
@@ -103,7 +104,6 @@ namespace breakthrough.Controllers
                         {
                             if (reader.Read())
                             {
-                                // Set user session or cookie here
                                 string role = reader["Role"].ToString();
                                 connection.Close();
                                 return RedirectToAction("Dashboard", new { role });
@@ -112,10 +112,8 @@ namespace breakthrough.Controllers
                         connection.Close();
                     }
                 }
-
                 ModelState.AddModelError("", "Incorrect email or password. try again!");
             }
-
             return View(model);
         }
 
@@ -153,6 +151,9 @@ namespace breakthrough.Controllers
         {
             return View();
         }
+
+
+
 
     }
 }

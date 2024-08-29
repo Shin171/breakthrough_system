@@ -24,7 +24,8 @@ namespace breakthrough.Controllers
                         PhoneNumber VARCHAR(15) NOT NULL,
                         Email VARCHAR(100) UNIQUE NOT NULL,
                         Password VARCHAR(256) NOT NULL,
-                        Role ENUM('Leader', 'Member') NOT NULL
+                        Role ENUM('Leader', 'Member') NOT NULL,
+                        DataPolicyAccepted BOOLEAN NOT NULL DEFAULT FALSE
                     )", conn);
                 cmd.ExecuteNonQuery();
             }

@@ -4,5 +4,47 @@
     Layout = "~/Views/Shared/LeaderLayout.cshtml";
 }
 
-<h2>Activities</h2>
+@model breakthrough.Models.User
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card mt-4 shadow-lg">
+                <div class="card-header text-center">
+                    <h2 class="mb-0">Activities</h2>
+                    <p class="justify-content-between">
+                        <a asp-action="Create" class="btn btn-primary mt-0">Add New Activity/Quiz</a>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Type of Activity</th>
+                            <th>Date Created</th>
+                            <th>Date Given</th>
+                            <th>Due Date</th>
+                            <th>----</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>-----</td>
+                            <td>-----</td>
+                            <td>-----</td>
+                            <td>-----</td>
+                            <td>-----</td>
+                            <td>-----</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="Id" class="btn btn-warning">Edit</a>
+                                <a asp-action="Delete" asp-route-id="Id" class="btn btn-danger">Delete</a>
+                                <a asp-action="Details" asp-route-id="Id" class="btn btn-info">View Details</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

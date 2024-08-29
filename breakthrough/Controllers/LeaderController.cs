@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,6 +10,8 @@ namespace breakthrough.Controllers
 {
     public class LeaderController : Controller
     {
+        private string _dbConnection = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+
         // GET: Leader
         public ActionResult Dashboard()
         {
@@ -41,7 +45,7 @@ namespace breakthrough.Controllers
 
         public ActionResult Logout()
         {
-            return View();
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult Profile()
@@ -58,5 +62,7 @@ namespace breakthrough.Controllers
         {
             return View();
         }
+
+        
     }
 }

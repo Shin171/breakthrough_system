@@ -19,7 +19,7 @@ namespace breakthrough.Models
 
         [Required(ErrorMessage = "Phone number is required.")]
         [Phone(ErrorMessage = "Invalid phone number.")]
-        [StringLength(15, ErrorMessage = "Phone number cannot be longer than 15 characters.")]
+        [StringLength(11, ErrorMessage = "Phone number cannot be longer than 11 characters.")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Email is required.")]
@@ -28,7 +28,7 @@ namespace breakthrough.Models
 
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters long.")]
+        [StringLength(100, MinimumLength = 4, ErrorMessage = "Password must be at least 6 characters long.")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Confirm Password is required.")]
