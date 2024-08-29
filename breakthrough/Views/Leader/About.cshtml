@@ -2,9 +2,31 @@
     ViewBag.Title = "About";
     Layout = "~/Views/Shared/LeaderLayout.cshtml";
 }
+@{
+    ViewBag.Title = "About";
+}
 <main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+    <h2 id="title" class="text-center">@ViewBag.Title</h2>
 
-    <p>Use this area to provide additional information.</p>
+    <div class="container-fluid">
+        <div class="text-center mb-5">
+            <div class="d-flex justify-content-between mt-5">
+                <div class="w-50">
+                    <h3 class="font-weight-bold">Mission Statement</h3>
+                    <p style="font-size: 1.25rem;">
+                        We exist to find people to Christ through intentional evangelism, incorporate them into the church membership to develop commitment for spiritual growth, nurture them through equipping to serve, and finally deploy them in their respective calling, according to their spiritual gifts, where the gospel of Christ will be preached and the kingdom of God will be advanced everywhere God is leading us.
+                    </p>
+                </div>
+
+                <div class="w-50 text-right">
+                    <h3 class="font-weight-bold">Vision Statement</h3>
+                    <p style="font-size: 1.25rem;">
+                        To be a thriving, high-impact, life-transforming Pentecostal church where God has planted us and will be planting us until the Second Coming of Christ, locally and abroad, by developing leaders of leaders through intentional discipleship who can advance the kingdom of God in the contemporary world.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="mt-5 text-center">Use this area to provide additional information about the church's history, ministries, and more.</p>
 </main>

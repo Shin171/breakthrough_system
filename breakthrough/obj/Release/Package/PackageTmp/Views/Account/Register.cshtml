@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+@model breakthrough.Models.User
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Create an Account</h2>
+                    <form asp-action="Register" method="post">
+                        <div class="form-floating mb-3">
+                            <input id="floatingName" class="form-control @(ViewData.ModelState["Name"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="Name" placeholder="Enter Fullname" required />
+                            <label for="floatingName">Name</label>
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "invalid-feedback" })
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input id="floatingBirthdate" class="form-control @(ViewData.ModelState["Birthdate"]?.Errors.Count > 0 ? "is-invalid" : "")" type="date" name="Birthdate" required />
+                            <label for="floatingBirthdate">Birthdate</label>
+                            @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "invalid-feedback" })
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input id="floatingPhoneNumber" class="form-control @(ViewData.ModelState["PhoneNumber"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="PhoneNumber" placeholder="Enter Phone number" required />
+                            <label for="floatingPhoneNumber">Phone Number</label>
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "invalid-feedback" })
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input id="floatingEmail" class="form-control @(ViewData.ModelState["Email"]?.Errors.Count > 0 ? "is-invalid" : "")" type="email" name="Email" placeholder="Enter email" required />
+                            <label for="floatingEmail">Email</label>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "invalid-feedback" })
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input id="floatingPassword" class="form-control @(ViewData.ModelState["Password"]?.Errors.Count > 0 ? "is-invalid" : "")" type="password" name="Password" placeholder="Enter Password" required />
+                            <label for="floatingPassword">Password</label>
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "invalid-feedback" })
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input id="floatingConfirmPassword" class="form-control @(ViewData.ModelState["ConfirmPassword"]?.Errors.Count > 0 ? "is-invalid" : "")" type="password" name="ConfirmPassword" placeholder="Confirm Password" required />
+                            <label for="floatingConfirmPassword">Confirm Password</label>
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "invalid-feedback" })
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <select id="floatingRole" class="form-control custom-select @(ViewData.ModelState["Role"]?.Errors.Count > 0 ? "is-invalid" : "")" name="Role" required>
+                                <option value="">Select a role...</option>
+                                <option value="Leader">Leader</option>
+                                <option value="Member">Member</option>
+                            </select>
+                            <label for="floatingRole">Role</label>
+                            @Html.ValidationMessageFor(model => model.Role, "", new { @class = "invalid-feedback" })
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input id="acceptPolicy" class="form-check-input @(ViewData.ModelState["AcceptPolicy"]?.Errors.Count > 0 ? "is-invalid" : "")" type="checkbox" name="AcceptPolicy" required />
+                            <label class="form-check-label" for="acceptPolicy">
+                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#dataPolicyModal">data policy</a>.
+                            </label>
+                            @Html.ValidationMessageFor(model => model.AcceptPolicy, "", new { @class = "invalid-feedback" })
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="dataPolicyModal" tabindex="-1" aria-labelledby="dataPolicyModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="dataPolicyModalLabel">Data Policy</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>This is the data policy of our website. Please read it carefully.</p>
+
+                                        <ul>
+                                            <li>We collect personal information that you provide to us directly.</li>
+                                            <li>Your data is stored securely and is not shared with third parties without your consent.</li>
+                                            <li>You have the right to access and update your information.</li>
+                                            <li>For more information, please contact our support team.</li>
+                                        </ul>
+
+                                        <p>By using our services, you agree to this data policy.</p>
+                                    </div>
+                                    <div class="modal-footer d-flex">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary btn-lg" type="submit">Register</button>
+                            <a href="@Url.Action("Login", "Account")" class="btn-link btn">Already have an account?</a>
+                        </div>
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
