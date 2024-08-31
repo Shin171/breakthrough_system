@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/LeaderLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Conversations List -->
+        <div class="col-lg-4">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Conversations</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Search Bar -->
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search users" id="searchUserInput">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" onclick="searchUser()">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush" id="conversationList">
+                    <li class="list-group-item conversation" data-user="User 1" onclick="openConversation('user1')">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <img src="~/images/user1.jpg" class="rounded-circle user_img_msg" alt="User 1" width="40">
+                                <span class="ml-2">User 1</span>
+                            </div>
+                            <small class="text-muted">9:10 AM</small>
+                        </div>
+                    </li>
+                    <li class="list-group-item conversation" data-user="User 2" onclick="openConversation('user2')">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <img src="~/images/user2.jpg" class="rounded-circle user_img_msg" alt="User 2" width="40">
+                                <span class="ml-2">User 2</span>
+                            </div>
+                            <small class="text-muted">8:45 AM</small>
+                        </div>
+                    </li>
+                    <!-- More conversation items -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- Conversation Messages -->
+        <div class="col-lg-8">
+            <div class="card shadow-lg d-none" id="conversationPanel">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0" id="conversationTitle">Conversation with User</h4>
+                </div>
+                <div class="card-body" style="max-height: 400px; overflow-y: auto;" id="messageList">
+                    <!-- Messages will be dynamically loaded here -->
+                </div>
+                <div class="card-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Type a message" aria-label="Type a message" id="messageInput">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" onclick="sendMessage()">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // JavaScript to dynamically handle conversation expansion, message sending, and user search
+
+    function openConversation(user) {
+        // Set conversation title
+        document.getElementById('conversationTitle').innerText = 'Conversation with ' + user;
+
+        // Simulate loading messages (Here you would normally fetch this from the server)
+        let messages = '';
+        if (user === 'user1') {
+            messages = `
+        <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+                <img src="~/images/user1.jpg" class="rounded-circle user_img_msg" alt="User 1">
+            </div>
+            <div class="msg_cotainer">
+                Hello, how can I help you today?
+                <span class="msg_time">9:10 AM, Today</span>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+                Hi, I need help with my assignment.
+                <span class="msg_time_send">9:12 AM, Today</span>
+            </div>
+            <div class="img_cont_msg">
+                <img src="~/images/user2.jpg" class="rounded-circle user_img_msg" alt="User 2">
+            </div>
+        </div>`;
+        } else if (user === 'user2') {
+            messages = `
+        <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+                <img src="~/images/user2.jpg" class="rounded-circle user_img_msg" alt="User 2">
+            </div>
+            <div class="msg_cotainer">
+                Good morning!
+                <span class="msg_time">8:45 AM, Today</span>
+            </div>
+        </div>`;
+        }
+
+        document.getElementById('messageList').innerHTML = messages;
+
+        // Show conversation panel
+        document.getElementById('conversationPanel').classList.remove('d-none');
+    }
+
+    function sendMessage() {
+        const messageInput = document.getElementById('messageInput');
+        const messageText = messageInput.value.trim();
+
+        if (messageText === '') return;  // Don't send empty messages
+
+        // Add the new message to the message list
+        const newMessage = `
+    <div class="d-flex justify-content-end mb-4">
+        <div class="msg_cotainer_send">
+            ${messageText}
+            <span class="msg_time_send">Now</span>
+        </div>
+        <div class="img_cont_msg">
+            <img src="~/images/user2.jpg" class="rounded-circle user_img_msg" alt="User 2">
+        </div>
+    </div>`;
+
+        document.getElementById('messageList').innerHTML += newMessage;
+
+        // Clear the input
+        messageInput.value = '';
+    }
+
+    function searchUser() {
+        const input = document.getElementById('searchUserInput').value.toLowerCase();
+        const conversationList = document.getElementById('conversationList');
+        const conversations = conversationList.getElementsByClassName('conversation');
+
+        for (let i = 0; i < conversations.length; i++) {
+            const user = conversations[i].getAttribute('data-user').toLowerCase();
+            if (user.indexOf(input) > -1) {
+                conversations[i].style.display = "";
+            } else {
+                conversations[i].style.display = "none";
+            }
+        }
+    }
+</script>

@@ -258,7 +258,9 @@
     <Content Include="Views\Leader\About.cshtml" />
     <Content Include="Views\Leader\Profile.cshtml" />
     <Content Include="Views\Leader\Events.cshtml" />
-    <Content Include="Views\Leader\ActivitiesHistory.cshtml" />
+    <Content Include="Views\Leader\AddQuiz.cshtml" />
+    <Content Include="Views\Leader\EditQuiz.cshtml" />
+    <Content Include="Views\Leader\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

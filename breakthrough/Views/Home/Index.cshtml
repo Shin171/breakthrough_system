@@ -6,21 +6,21 @@
     <div id="imageCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="~/images/carousel3.jpg" class="d-block w-100 rounded" alt="Church Image 1">
+                <img src="@Url.Content("~/images/carousel3.jpg")" class="d-block w-100 rounded" alt="Church Image 1">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Welcome to Breakthrough Church System</h3>
                     <p>Transform your spiritual journey with a comprehensive web-based platform designed for your faith growth and church operations.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="~/images/carousel2.jpg" class="d-block w-100 rounded" alt="Church Image 2">
+                <img src="@Url.Content("~/images/carousel2.jpg")" class="d-block w-100 rounded" alt="Church Image 2">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Empower Your Faith</h3>
                     <p>Access discipleship training, track your progress, and deepen your relationship with Christ.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="~/images/carousel.jpg" class="d-block w-100 rounded" alt="Church Image 3">
+                <img src="@Url.Content("~/images/carousel.jpg")" class="d-block w-100 rounded" alt="Church Image 3">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Stay Connected</h3>
                     <p>Never miss an event again with our calendar and notification system. Engage with your church community.</p>
@@ -41,44 +41,7 @@
     <div class="text-center mt-5">
         <h1>Join Us Today</h1>
         <p class="lead">Experience a more connected and fulfilling church life with the Breakthrough Church System. Whether you're a disciple looking to grow or a leader aiming to streamline operations, our system is designed to meet your needs.</p>
-        <a href="/join" class="btn btn-primary btn-lg">Start Your Journey</a>
-    </div>
-
-    <!-- Features Section -->
-    <div class="row mt-5">
-        <div class="col-md-4">
-            <h3>Discipleship Training</h3>
-            <p>Access and complete lessons at your own pace. Earn certifications and take the next step in your faith journey.</p>
-        </div>
-        <div class="col-md-4">
-            <h3>Attendance Tracking</h3>
-            <p>Automated and accurate tracking of member participation.</p>
-        </div>
-        <div class="col-md-4">
-            <h3>Event Calendar</h3>
-            <p>Stay informed with a comprehensive view of all church activities and events.</p>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <h3>Communication Tools</h3>
-            <p>Seamless interaction with church members through built-in messaging features.</p>
-        </div>
-        <div class="col-md-4">
-            <h3>Notifications</h3>
-            <p>Receive timely updates and reminders about church activities and personal progress.</p>
-        </div>
-        <div class="col-md-4">
-            <h3>Stay Connected</h3>
-            <p>Engage with your church community and never miss important updates.</p>
-        </div>
-    </div>
-
-    <!-- Main Content Section -->
-    <div class="text-center mt-5">
-        <h1>Join Us Today</h1>
-        <p class="lead">Experience a more connected and fulfilling church life with the Breakthrough Church System. Whether you're a disciple looking to grow or a leader aiming to streamline operations, our system is designed to meet your needs.</p>
-        <a href="/join" class="btn btn-primary btn-lg">Start Your Journey</a>
+        <a href="@Url.Action("Register", "Account")" class="btn btn-primary btn-lg">Start Your Journey</a>
     </div>
 
     <!-- Accordion Section for Interactive Content -->
@@ -146,3 +109,17 @@
     </div>
 </div>
 
+<!-- Include jQuery and Bootstrap JS libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Initialize the carousel
+        $('#imageCarousel').carousel({
+            interval: 3000, // Set the interval for auto-sliding in milliseconds (3 seconds)
+            pause: 'hover', // Pause the carousel when the mouse hovers over it
+            wrap: true // When the carousel reaches the last slide, it wraps back to the first slide
+        });
+    });
+</script>

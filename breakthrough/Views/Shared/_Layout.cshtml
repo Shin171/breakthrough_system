@@ -15,11 +15,11 @@
             <img src="~/images/bcfLogo.jpg" alt="Church Logo" class="mr-3" style="height: 50px;" />
             Breakthrough Church System
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav w-50 d-flex justify-content-center fs-5">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "") })
                 </li>

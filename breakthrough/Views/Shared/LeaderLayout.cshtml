@@ -10,38 +10,37 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-light clearfix" data-bs-theme="light">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand me-4">
+            <a href="#" class="navbar-brand">
                 <img src="~/images/bcfLogo.jpg" alt="Church Logo" class="mr-3" style="height: 50px;" />
                 Breakthrough Church System
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor05" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item me-3">
+                    <li class="nav-item">
                         @Html.ActionLink("Dashboard", "Dashboard", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Dashboard" ? "active" : "") })
                     </li>
-                    <li class="nav-item me-3">
+                    <li class="nav-item">
                         @Html.ActionLink("Activities", "Activities", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Activities" ? "active" : "") })
                     </li>
-                    <li class="nav-item me-3">
+                    <li class="nav-item">
                         @Html.ActionLink("Calendar", "Calendar", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Calendar" ? "active" : "") })
                     </li>
-                    <li class="nav-item me-3">
+                    <li class="nav-item">
                         @Html.ActionLink("Notifications", "Notifications", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Notifications" ? "active" : "") })
                     </li>
-                    <li class="nav-item me-3">
-                        @Html.ActionLink("About", "About", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
+                    <li class="nav-item">
+                        @Html.ActionLink("Message", "Message", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
                     </li>
                     <!-- Other nav items -->
-                    <li class="nav-item dropdown ms-auto">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="true">Settings</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown01">
                             <li>@Html.ActionLink("My Profile", "Profile", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Activities History", "ActivitiesHistory", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
                             <li>@Html.ActionLink("Events", "Events", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Calendar", "Calendar", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("About", "About", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
                             <li><hr class="dropdown-divider"></li>
                             <li>@Html.ActionLink("Logout", "Logout", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
                         </ul>
