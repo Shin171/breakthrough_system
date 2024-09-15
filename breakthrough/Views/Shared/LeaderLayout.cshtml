@@ -8,12 +8,13 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-light clearfix" data-bs-theme="light">
+    <nav class="navbar navbar-expand-sm bg-dark clearfix" data-bs-theme="dark">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
-                <img src="~/images/bcfLogo.jpg" alt="Church Logo" class="mr-3" style="height: 50px;" />
+                <img src="~/images/bcfLogo.jpg" alt="Church Logo" class="mr-3 rounded-circle" style="height: 50px; width: 50px;" />
                 Breakthrough Church System
             </a>
+
             <button class="navbar-toggler mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -46,6 +47,10 @@
                         </ul>
                     </li>
                 </ul>
+                <form class="d-flex ms-auto" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 350px;">
+                    <button class="btn btn-secondary" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </nav>

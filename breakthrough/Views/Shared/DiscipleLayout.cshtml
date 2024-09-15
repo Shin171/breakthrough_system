@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-primary clearfix" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-dark clearfix" data-bs-theme="dark">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
-                <img src="~/images/bcfLogo.jpg" alt="Church Logo" class="mr-3" style="height: 50px;" />
+                <img src="~/images/bcfLogo.jpg" alt="Church Logo" class="mr-3 rounded-circle" style="height: 50px; width: 50px;" />
                 Breakthrough Church System
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,7 @@
                         @Html.ActionLink("Notifications", "Notifications", "Disciple", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Notifications" ? "active" : "") })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("About","About","Disciple", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
+                        @Html.ActionLink("About", "About", "Disciple", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
