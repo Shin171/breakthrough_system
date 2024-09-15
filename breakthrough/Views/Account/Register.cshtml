@@ -17,7 +17,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <input id="floatingBirthdate" class="form-control @(ViewData.ModelState["Birthdate"]?.Errors.Count > 0 ? "is-invalid" : "")" type="date" name="Birthdate" required />
+                            <input id="floatingBirthdate" class="form-control @(ViewData.ModelState["Birthdate"]?.Errors.Count > 0 ? "is-invalid" : "")" type="date" name="Birthdate" placeholder="Birthday" required />
                             @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
                         </div>
 
@@ -40,15 +40,6 @@
                         <div class="mb-3">
                             <input id="floatingConfirmPassword" class="form-control @(ViewData.ModelState["ConfirmPassword"]?.Errors.Count > 0 ? "is-invalid" : "")" type="password" name="ConfirmPassword" placeholder="Confirm Password" required />
                             @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            <select id="floatingRole" class="form-control @(ViewData.ModelState["Role"]?.Errors.Count > 0 ? "is-invalid" : "")" name="Role" required>
-                                <option value="">Select a role...</option>
-                                <option value="Leader">Leader</option>
-                                <option value="Member">Member</option>
-                            </select>
-                            @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="form-check mb-3">
@@ -84,15 +75,21 @@
                             </div>
                         </div>
 
-                        <div class="d-grid">
+                        <div class="d-grid mb-2">
                             <button class="btn btn-primary btn-lg" type="submit">Register</button>
+                        </div>
+                        <!-- Connect with Google Button -->
+                        <div class="d-grid mb-3">
+                            <a href="@Url.Action("GoogleLogin", "Account")" class="btn btn-success btn-lg border">
+                                <i class="fab fa-google me-2"></i>Connect with Google
+                            </a>
                         </div>
                     </form>
 
                     <hr />
 
                     <div class="d-grid">
-                        <a href="@Url.Action("Login", "Account")" class="btn btn-secondary btn-lg">Already have an account?</a>
+                        <a href="@Url.Action("Login", "Account")" class="btn btn-info btn-lg">Already have an account?</a>
                     </div>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 </div>

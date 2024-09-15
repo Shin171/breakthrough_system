@@ -7,58 +7,149 @@
     @Styles.Render("~/Content/bootstrap-flaty.css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* Custom styles for the sidebar */
+        #sidebar {
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            background-color: #ffffff; /* Changed to white */
+            padding-top: 60px;
+            transition: left 0.3s;
+            z-index: 1045;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+            #sidebar.active {
+                left: 0;
+            }
+
+            #sidebar .nav-link {
+                color: #343a40; /* Dark text for better contrast */
+            }
+
+                #sidebar .nav-link.active {
+                    background-color: #007bff;
+                    color: #ffffff;
+                }
+
+        #content {
+            transition: margin-left 0.3s;
+            margin-left: 0;
+        }
+
+            #content.active {
+                margin-left: 250px;
+            }
+
+        /* Fixed sidebar toggle button */
+        .sidebar-toggle {
+            position: fixed;
+            left: 15px;
+            top: 15px;
+            z-index: 1050;
+        }
+
+        /* Profile section styles */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #343a40;
+            padding: 0 15px;
+        }
+
+            .profile-section img {
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                object-fit: cover;
+                border: 2px solid #007bff;
+            }
+
+            .profile-section input[type="file"] {
+                display: none;
+            }
+
+            .profile-section label {
+                cursor: pointer;
+                color: #007bff;
+                display: block;
+                margin-top: 10px;
+            }
+
+        /* Adjust navbar height to align with fixed toggle button */
+        .navbar {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        /* Optional: Adjust footer to stay at the bottom */
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .body-content {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark clearfix" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a href="#" class="navbar-brand">
-                <img src="~/images/bcfLogo.jpg" alt="Church Logo" class="mr-3 rounded-circle" style="height: 50px; width: 50px;" />
-                Breakthrough Church System
-            </a>
 
-            <button class="navbar-toggler mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        @Html.ActionLink("Dashboard", "Dashboard", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Dashboard" ? "active" : "") })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Activities", "Activities", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Activities" ? "active" : "") })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Calendar", "Calendar", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Calendar" ? "active" : "") })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Notifications", "Notifications", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Notifications" ? "active" : "") })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Message", "Message", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "") })
-                    </li>
-                    <!-- Other nav items -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="true">Settings</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                            <li>@Html.ActionLink("My Profile", "Profile", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Events", "Events", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>@Html.ActionLink("Logout", "Logout", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex ms-auto" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 350px;">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </form>
-            </div>
+    <!-- Fixed Sidebar Toggle Button -->
+    <button class="btn btn-dark sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="profile-section">
+            <img src="~/images/defaultProfile.jpg" alt="Profile Picture" id="profileImage">
+            <input type="file" id="profilePictureInput" accept="image/*">
+            <label for="profilePictureInput"><i class="fas fa-camera"></i> Change Picture</label>
+            <h4>@User.Identity.Name</h4> <!-- Displaying the user's name -->
         </div>
-    </nav>
 
-    <div class="container-fluid body-content">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                @Html.ActionLink("Dashboard", "Dashboard", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Dashboard" ? "active" : "") })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Activities", "Activities", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Activities" ? "active" : "") })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Calendar", "Calendar", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Calendar" ? "active" : "") })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Notifications", "Notifications", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Notifications" ? "active" : "") })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Message", "Message", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Message" ? "active" : "") })
+            </li>
+            <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                    <li>@Html.ActionLink("My Profile", "Profile", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                    <li>@Html.ActionLink("Events", "Events", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content" class="container-fluid body-content">
         @RenderBody()
         <hr />
     </div>
+
     <footer class="bg-light text-center text-lg-start mt-auto w-100">
         <div class="container-fluid p-4" style="background-color: #f8f9fa;">
             <div class="row">
@@ -107,9 +198,30 @@
         </div>
     </footer>
 
-
-    <!-- Ensure Bootstrap script is loaded last -->
+    <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Sidebar Toggle Functionality
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('content').classList.toggle('active');
+        });
+
+        // Image Picker Functionality
+        const profileImage = document.getElementById('profileImage');
+        const profilePictureInput = document.getElementById('profilePictureInput');
+
+        profilePictureInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
