@@ -12,6 +12,7 @@ using System.Web.Helpers;
 using System.Net.Mail;
 using System.Net;
 using System.Web.Security;
+using System.ComponentModel.DataAnnotations;
 
 namespace breakthrough.Controllers
 {
@@ -54,10 +55,10 @@ namespace breakthrough.Controllers
                             return View(model);
                         }
                     }
-
                     model.Password = HashPassword(model.Password);
 
-                    string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password, AcceptPolicy) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password, @AcceptPolicy)";
+
+                    string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password)";
                     using (var insertCmd = new MySqlCommand(insertQuery, connection))
                     {
                         connection.Open();
@@ -66,11 +67,14 @@ namespace breakthrough.Controllers
                         insertCmd.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
                         insertCmd.Parameters.AddWithValue("@Email", model.Email);
                         insertCmd.Parameters.AddWithValue("@Password", model.Password);
-                        insertCmd.Parameters.AddWithValue("@AcceptPolicy", model.AcceptPolicy);
+                        //insertCmd.Parameters.AddWithValue("@AcceptPolicy", model.AcceptPolicy = true);
+
+
 
                         insertCmd.ExecuteNonQuery();
                         connection.Close();
                     }
+
                 }
 
                 return RedirectToAction("Login");

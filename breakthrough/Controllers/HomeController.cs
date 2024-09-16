@@ -22,8 +22,8 @@ namespace breakthrough.Controllers
                         Birthdate DATE NOT NULL,
                         PhoneNumber VARCHAR(15) NOT NULL,
                         Email VARCHAR(100) UNIQUE NOT NULL,
-                        Password VARCHAR(256) NOT NULL,
-                        DataPolicyAccepted BOOLEAN NOT NULL DEFAULT FALSE
+                        Password VARCHAR(256) NOT NULL
+                        
                     )", conn);
                 cmd.ExecuteNonQuery();
 
@@ -58,10 +58,10 @@ namespace breakthrough.Controllers
                     CREATE TABLE if not exists Activities (
                         ActivityId INT AUTO_INCREMENT PRIMARY KEY,
                         Title VARCHAR(100) NOT NULL,
-                        ActivityType VARCHAR(50) NOT NULL, -- e.g., 'Quiz', 'Essay'
-                        DateCreated DATETIME NOT NULL, -- The date the activity was created
-                        DateGiven DATETIME NULL, -- Nullable, the date the activity was assigned
-                        DueDate DATETIME NULL -- Nullable, the due date for the activity
+                        ActivityType VARCHAR(50) NOT NULL, -- 
+                        DateCreated DATETIME NOT NULL,
+                        DateGiven DATETIME NULL,
+                        DueDate DATETIME NULL
                      );";
                 cmd.ExecuteNonQuery();
             }

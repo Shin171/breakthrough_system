@@ -23,33 +23,6 @@ namespace breakthrough.Controllers
             return View();
         }
 
-        public ActionResult Activities(Activity model)
-        {
-            if (ModelState.IsValid)
-            {
-                using (var conn = new MySqlConnection(_dbConnection))
-                {
-                    conn.Open();
-
-                    var cmd = new MySqlCommand(@"
-                INSERT INTO Activities (Title, ActivityType, DateCreated, DateGiven, DueDate) 
-                VALUES (@Title, @ActivityType, @DateCreated, @DateGiven, @DueDate);", conn);
-
-                    // Add the parameters for the query
-                    cmd.Parameters.AddWithValue("@Title", model.Title);
-                    cmd.Parameters.AddWithValue("@ActivityType", model.ActivityType);
-                    cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now); // Automatically set the date to now
-                    cmd.Parameters.AddWithValue("@DateGiven", model.DateGiven.HasValue ? (object)model.DateGiven.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@DueDate", model.DueDate.HasValue ? (object)model.DueDate.Value : DBNull.Value);
-                    cmd.ExecuteNonQuery();
-                }
-
-                return RedirectToAction("Activities"); // Redirect to the Activities page after adding
-            }
-
-            return View(model); // Return the same view with validation errors if any
-        }
-
         public ActionResult Calendar()
         {
             return View();
