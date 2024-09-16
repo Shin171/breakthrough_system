@@ -42,48 +42,52 @@
                             @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                         </div>
 
-                        <div class="form-check mb-3">
-                            <input id="acceptPolicy" class="form-check-input @(ViewData.ModelState["AcceptPolicy"]?.Errors.Count > 0 ? "is-invalid" : "")" type="checkbox" name="AcceptPolicy" required />
-                            <label class="form-check-label" for="acceptPolicy">
-                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#dataPolicyModal">data policy</a>.
+                        <!-- Checkbox for Privacy Policy -->
+                        <div class="form-group">
+                            <input type="checkbox" id="acceptPolicy" name="AcceptPolicy" required>
+                            <label for="acceptPolicy">
+                                I have read and accept the
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#dataPolicyModal">Data Policy</a>.
                             </label>
-                            @Html.ValidationMessageFor(model => model.AcceptPolicy, "", new { @class = "text-danger" })
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="dataPolicyModal" tabindex="-1" aria-labelledby="dataPolicyModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="dataPolicyModalLabel">Data Policy</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>This is the data policy of our website. Please read it carefully.</p>
-                                        <ul>
-                                            <li>We collect personal information that you provide to us directly.</li>
-                                            <li>Your data is stored securely and is not shared with third parties without your consent.</li>
-                                            <li>You have the right to access and update your information.</li>
-                                            <li>For more information, please contact our support team.</li>
-                                        </ul>
-                                        <p>By using our services, you agree to this data policy.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="d-grid mb-2">
                             <button class="btn btn-primary btn-lg" type="submit">Register</button>
                         </div>
-                        <!-- Connect with Google Button -->
-                        <div class="d-grid mb-3">
-                            <a href="@Url.Action("GoogleLogin", "Account")" class="btn btn-success btn-lg border">
-                                <i class="fab fa-google me-2"></i>Connect with Google
-                            </a>
+                    </form>
+
+                    <!-- Your existing modal for displaying the privacy policy -->
+                    <div class="modal fade" id="dataPolicyModal" tabindex="-1" aria-labelledby="dataPolicyModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="dataPolicyModalLabel">Data Policy</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Your data policy content -->
+                                    <p>This is the data policy of our website. Please read it carefully.</p>
+                                    <ul>
+                                        <li>We collect personal information that you provide to us directly.</li>
+                                        <li>Your data is stored securely and is not shared with third parties without your consent.</li>
+                                        <li>You have the right to access and update your information.</li>
+                                        <li>For more information, please contact our support team.</li>
+                                    </ul>
+                                    <p>By using our services, you agree to this data policy.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- Connect with Google Button -->
+                    <div class="d-grid mb-3">
+                        <a href="@Url.Action("GoogleLogin", "Account")" class="btn btn-success btn-lg border">
+                            <i class="fab fa-google me-2"></i>Connect with Google
+                        </a>
+                    </div>
                     </form>
 
                     <hr />

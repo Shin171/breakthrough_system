@@ -24,6 +24,9 @@
                     <li class="nav-item">
                         @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "") })
                     </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Calendar", "Calendar", "Home", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "") })
+                    </li>
                 </ul>
                 <ul class="navbar-nav ms-auto d-flex">
                     @if (User.Identity.IsAuthenticated)

@@ -10,7 +10,6 @@ namespace breakthrough.Models
     public class User
     {
         [Required(ErrorMessage = "Name is required.")]
-        [StringLength(100, ErrorMessage = "Name cannot be longer than 100 characters.")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Birthdate is required.")]

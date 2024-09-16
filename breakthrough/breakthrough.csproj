@@ -207,7 +207,7 @@
     <Content Include="images\carousel.jpg" />
     <Content Include="images\carousel2.jpg" />
     <Content Include="images\carousel3.jpg" />
-    <Content Include="images\png-clipart-computer-icons-open-person-family-icon-black-silhouette-black.png" />
+    <Content Include="images\download.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -259,6 +259,7 @@
     <Content Include="Views\Leader\AddQuiz.cshtml" />
     <Content Include="Views\Leader\EditQuiz.cshtml" />
     <Content Include="Views\Leader\Message.cshtml" />
+    <Content Include="Views\Home\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

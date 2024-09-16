@@ -57,7 +57,7 @@ namespace breakthrough.Controllers
 
                     model.Password = HashPassword(model.Password);
 
-                    string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password, Role, AcceptPolicy) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password, @Role, @AcceptPolicy)";
+                    string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password, AcceptPolicy) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password, @AcceptPolicy)";
                     using (var insertCmd = new MySqlCommand(insertQuery, connection))
                     {
                         connection.Open();
@@ -66,7 +66,6 @@ namespace breakthrough.Controllers
                         insertCmd.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
                         insertCmd.Parameters.AddWithValue("@Email", model.Email);
                         insertCmd.Parameters.AddWithValue("@Password", model.Password);
-                        insertCmd.Parameters.AddWithValue("@Role", model.Role);
                         insertCmd.Parameters.AddWithValue("@AcceptPolicy", model.AcceptPolicy);
 
                         insertCmd.ExecuteNonQuery();
@@ -79,6 +78,7 @@ namespace breakthrough.Controllers
 
             return View(model);
         }
+
 
         [HttpGet]
         public ActionResult Login()

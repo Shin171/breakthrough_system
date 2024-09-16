@@ -6,6 +6,27 @@ using System.Web;
 
 namespace breakthrough.Models
 {
+    public class Activity
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string Title { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string ActivityType { get; set; } // e.g., "Quiz", "Essay", etc.
+
+        [Required]
+        public DateTime DateCreated { get; set; } // The date when the activity was created
+
+        public DateTime? DateGiven { get; set; } // The date the activity was assigned, nullable if not yet given
+
+        public DateTime? DueDate { get; set; } // The due date for the activity, nullable if not yet set
+    }
+
     public class Quiz
     {
         [Key]

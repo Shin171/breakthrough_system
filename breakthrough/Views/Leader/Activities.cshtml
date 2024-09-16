@@ -1,10 +1,10 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Activities";
     Layout = "~/Views/Shared/LeaderLayout.cshtml";
 }
 
-@model breakthrough.Models.User
+@model IEnumerable<breakthrough.Models.Activity
+
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -16,30 +16,46 @@
                     </p>
                     <table class="table table-striped">
                         <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Type of Activity</th>
-                            <th>Date Created</th>
-                            <th>Date Given</th>
-                            <th>Due Date</th>
-                            <th>----</th>
-                            <th>Actions</th>
-                        </tr>
+                            <tr>
+                                <th>Title</th>
+                                <th>Type of Activity</th>
+                                <th>Date Created</th>
+                                <th>Date Given</th>
+                                <th>Due Date</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>-----</td>
-                            <td>-----</td>
-                            <td>-----</td>
-                            <td>-----</td>
-                            <td>-----</td>
-                            <td>-----</td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="Id" class="btn btn-warning">Edit</a>
-                                <a asp-action="Delete" asp-route-id="Id" class="btn btn-danger">Delete</a>
-                                <a asp-action="Details" asp-route-id="Id" class="btn btn-info">View Details</a>
-                            </td>
-                        </tr>
+                            @foreach (var activity in Model)
+                            {
+                                <tr>
+                                    <td>@activity.Title</td>
+                                    <td>@activity.ActivityType</td>
+                                    <td>@activity.DateCreated.ToString("yyyy-MM-dd")</td>
+                                    <td>@activity.DateGiven?.ToString("yyyy-MM-dd") ?? "N/A"</td> <!-- Nullable DateGiven -->
+                                    <td>@activity.DueDate?.ToString("yyyy-MM-dd") ?? "N/A"</td> <!-- Nullable DueDate -->
+                                    <td>
+                                        <!-- Button group for larger screens -->
+                                        <div class="btn-group d-none d-lg-block">
+                                            <a asp-action="Edit" asp-route-id="@activity.Id" class="btn btn-warning">Edit</a>
+                                            <a asp-action="Delete" asp-route-id="@activity.Id" class="btn btn-danger">Delete</a>
+                                            <a asp-action="Details" asp-route-id="@activity.Id" class="btn btn-info">View Details</a>
+                                        </div>
+
+                                        <!-- Dropdown for smaller screens -->
+                                        <div class="dropdown d-block d-lg-none">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Actions
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" asp-action="Edit" asp-route-id="@activity.Id">Edit</a></li>
+                                                <li><a class="dropdown-item" asp-action="Delete" asp-route-id="@activity.Id">Delete</a></li>
+                                                <li><a class="dropdown-item" asp-action="Details" asp-route-id="@activity.Id">View Details</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -47,4 +63,3 @@
         </div>
     </div>
 </div>
-

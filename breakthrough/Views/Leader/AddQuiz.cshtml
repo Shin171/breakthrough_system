@@ -1,73 +1,35 @@
-﻿@{
-    ViewBag.Title = "Create Quiz";
-    Layout = "~/Views/Shared/LeaderLayout.cshtml";
+﻿@model breakthrough.Models.Activity
+
+@{
+    ViewBag.Title = "Add New Quiz/Activity";
 }
 
-@model breakthrough.Models.Quiz
+<h2>Add New Quiz/Activity</h2>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h2 class="text-center mb-4">Create a Quiz</h2>
-                    <form asp-action="CreateQuiz" method="post">
-                        <div class="mb-3">
-                            <input id="floatingQuizTitle" class="form-control @(ViewData.ModelState["Title"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="Title" placeholder="Enter Quiz Title" required />
-                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            <textarea id="floatingQuizDescription" class="form-control @(ViewData.ModelState["Description"]?.Errors.Count > 0 ? "is-invalid" : "")" name="Description" placeholder="Enter Quiz Description" rows="4" required></textarea>
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            <input id="floatingQuestion" class="form-control @(ViewData.ModelState["Question"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="Question" placeholder="Enter Question" required />
-                            @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            <input id="floatingOption1" class="form-control @(ViewData.ModelState["Option1"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="Option1" placeholder="Enter Option 1" required />
-                            @Html.ValidationMessageFor(model => model.Option1, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            <input id="floatingOption2" class="form-control @(ViewData.ModelState["Option2"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="Option2" placeholder="Enter Option 2" required />
-                            @Html.ValidationMessageFor(model => model.Option2, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            <input id="floatingOption3" class="form-control @(ViewData.ModelState["Option3"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="Option3" placeholder="Enter Option 3" required />
-                            @Html.ValidationMessageFor(model => model.Option3, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            <input id="floatingOption4" class="form-control @(ViewData.ModelState["Option4"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="Option4" placeholder="Enter Option 4" required />
-                            @Html.ValidationMessageFor(model => model.Option4, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="correctAnswer" class="form-label">Correct Answer</label>
-                            <select id="correctAnswer" class="form-control @(ViewData.ModelState["CorrectAnswer"]?.Errors.Count > 0 ? "is-invalid" : "")" name="CorrectAnswer" required>
-                                <option value="">Select the correct answer...</option>
-                                <option value="Option1">Option 1</option>
-                                <option value="Option2">Option 2</option>
-                                <option value="Option3">Option 3</option>
-                                <option value="Option4">Option 4</option>
-                            </select>
-                            @Html.ValidationMessageFor(model => model.CorrectAnswer, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="d-flex justify-content-between">
-                            <a href="@Url.Action("Activities", "Leader")" class="btn btn-secondary btn-lg">Back</a>
-                            <button class="btn btn-primary btn-lg" type="submit">Create Quiz</button>
-                        </div>
-                    </form>
-
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger mt-3" })
-                </div>
-            </div>
-        </div>
+<form asp-action="AddQuiz" method="post">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
-</div>
+    <div class="form-group">
+        <label asp-for="ActivityType" class="control-label"></label>
+        <select asp-for="ActivityType" class="form-control">
+            <option>Quiz</option>
+            <option>Essay</option>
+            <!-- Add other activity types here -->
+        </select>
+        <span asp-validation-for="ActivityType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateGiven" class="control-label"></label>
+        <input asp-for="DateGiven" class="form-control" type="date" />
+        <span asp-validation-for="DateGiven" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DueDate" class="control-label"></label>
+        <input asp-for="DueDate" class="form-control" type="date" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Activity</button>
+</form>

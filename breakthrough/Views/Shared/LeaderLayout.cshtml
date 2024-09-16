@@ -56,26 +56,28 @@
         /* Logo section styles */
         .logo-section {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: #343a40;
         }
-
             .logo-section img {
-                width: 100px;
+                width: 60px;
+                height: 60px; /* Ensure height is equal to width */
+                border-radius: 50%; /* Makes the image circular */
+                object-fit: cover; /* Ensures the image scales properly within the circular frame */
             }
 
         /* Profile section styles */
         .profile-section {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #343a40;
             padding: 0 15px;
         }
 
             .profile-section img {
                 border-radius: 50%;
-                height: 100px;
-                width: 100px;
+                height: 60px;
+                width: 60px;
                 object-fit: cover;
                 border: 2px solid #007bff;
             }
@@ -125,45 +127,44 @@
         <!-- Logo Section -->
         <div class="logo-section">
             <img src="~/images/bcfLogo.jpg" alt="Church Logo">
-            <h3>Breakthrough Church</h3>
+            <h4>Breakthrough</h4>
         </div>
-
+        <hr>
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="~/images/png-clipart-computer-icons-open-person-family-icon-black-silhouette-black.png" alt="Profile Picture" id="profileImage">
-            <input type="file" id="profilePictureInput" accept="image/*">
-            <label for="profilePictureInput"><i class="fas fa-camera"></i> Change Picture</label>
-            <h4>@User.Identity.Name</h4> <!-- Displaying the user's name -->
+            <img src="~/images/download.png" alt="Profile Picture" id="profileImage">
+            @*<input type="file" id="profilePictureInput" accept="image/*">
+            <label for="profilePictureInput"><i class="fas fa-camera"></i>Upload Picture</label>*@
+            <h5>Hello @User.Identity.Name </h5> 
         </div>
 
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <i class="bi bi-house-door ">@Html.ActionLink("Dashboard", "Dashboard", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Dashboard" ? "active" : "") })</i>
-            </li>
-            <li class="nav-item">
-                <i class="bi bi-activity"></i>@Html.ActionLink("Activities", "Activities", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Activities" ? "active" : "") })
-            </li>
-            <li class="nav-item">
-                <i class="bi bi-calendar"></i>@Html.ActionLink("Calendar", "Calendar", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Calendar" ? "active" : "") })
-            </li>
-            <li class="nav-item">
-                <i class="bi bi-bell"></i>@Html.ActionLink("Notifications", "Notifications", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Notifications" ? "active" : "") })
-            </li>
-            <li class="nav-item">
-                <i class="bi bi-envelope"></i>@Html.ActionLink("Message", "Message", "Leader", new { area = "" }, new { @class = "nav-link " + (ViewContext.RouteData.Values["action"].ToString() == "Message" ? "active" : "") })
-            </li>
-            <li class="nav-item">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-gear"></i>Settings
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                    <li>@Html.ActionLink("My Profile", "Profile", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
-                    <li>@Html.ActionLink("Events", "Events", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li>@Html.ActionLink("Logout", "Logout", "Leader", new { area = "" }, new { @class = "dropdown-item" })</li>
-                </ul>
-            </li>
-        </ul>
+        <ul class="nav d-flex flex-column card">
+    <li class="nav-item">
+       @Html.ActionLink("Dashboard", "Dashboard", "Leader", new { area = "" }, new { @class = "nav-link d-flex justify-content-between " + (ViewContext.RouteData.Values["action"].ToString() == "Dashboard" ? "active" : "") })
+       
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("Activities", "Activities", "Leader", new { area = "" }, new { @class = "nav-link d-flex justify-content-between " + (ViewContext.RouteData.Values["action"].ToString() == "Activities" ? "active" : "") })
+       
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("Calendar", "Calendar", "Leader", new { area = "" }, new { @class = "nav-link d-flex justify-content-between " + (ViewContext.RouteData.Values["action"].ToString() == "Calendar" ? "active" : "") })
+       
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("Notifications", "Notifications", "Leader", new { area = "" }, new { @class = "nav-link d-flex justify-content-between " + (ViewContext.RouteData.Values["action"].ToString() == "Notifications" ? "active" : "") })
+       
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("Message", "Message", "Leader", new { area = "" }, new { @class = "nav-link d-flex justify-content-between " + (ViewContext.RouteData.Values["action"].ToString() == "Message" ? "active" : "") })
+       
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("Settings", "Settings", "Leader", new { area = "" }, new { @class = "nav-link d-flex justify-content-between " + (ViewContext.RouteData.Values["action"].ToString() == "Message" ? "active" : "") })
+
+    </li>
+</ul>
+
     </div>
 
   
