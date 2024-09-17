@@ -2,18 +2,109 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/LeaderLayout.cshtml";
 }
+<style>
+    .profile-section {
+        display: flex;
+        align-items: center;
+        margin-top: 17px;
+    }
 
+    #profileImage {
+        object-fit: cover;
+        width: 24px; /* Same size as the notification icon */
+        height: 24px;
+    }
 
-<!-- Search Functionality -->
-<div class="row mb-2 mt-3 ms-5">
-    <div class="col">
-        <form class="form-inline d-flex">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 250px;">
-            <button class="btn btn-secondary ms-1 my-2 my-sm-0" type="submit">Search</button>
+    .right-side {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    /* Flexbox for Search Bar */
+    .search-container {
+        display: flex;
+        flex-grow: 1; /* Ensures the search bar grows with the container */
+        max-width: 550px; /* Sets a reasonable maximum size */
+        height: 40px; /* Explicit height to keep the search bar consistent */
+    }
+
+    .search-bar {
+        flex-grow: 1; /* Search bar takes up available space */
+        min-width: 150px; /* Minimum width for small screens */
+        height: 100%; /* Ensure the input takes the full height of its container */
+        box-sizing: border-box; /* Make sure padding is included within the height */
+    }
+
+    .search-button {
+        flex-shrink: 0; /* Prevents the button from shrinking */
+        margin-left: 1px;
+        height: 100%; /* Ensure the button has the same height as the input */
+        padding: 0 5px; /* Optional padding to control button width */
+    }
+</style>
+
+<!-- Search Functionality and Notification -->
+<div class="row mb-0 mt-0 ms-5">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+        <!-- Search Bar -->
+        <form class="form-inline d-flex me-2 search-container">
+            <input class="form-control mr-sm-1 search-bar" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-secondary ms-1 my-2 my-sm-0 search-button" type="submit">Search</button>
         </form>
-        
+
+        <!-- Right Side: Notification and Profile -->
+        <div class="right-side">
+            <!-- Notification Icon -->
+            <div class="dropdown me-0">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownNotification" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-bell"></i>
+                </a>
+
+                <!-- Dropdown Card for Notifications -->
+                <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="dropdownNotification" style="width: 300px;">
+                    <li class="mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">New Message</h6>
+                                <p class="card-text">You have a new message from Poi.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Event Reminder</h6>
+                                <p class="card-text">Don't forget the upcoming meeting at 3 PM.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary w-100">View All Notifications</button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="profile-section dropdown">
+                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownProfile" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="~/images/download.png" alt="Profile Picture" id="profileImage" class="rounded-circle">
+                </a>
+
+                <!-- Dropdown Profile Options -->
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfile">
+                    <li><a class="dropdown-item" href="#">View Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
 
 <div class="container-fluid">
     <div class="row justify-content-center">

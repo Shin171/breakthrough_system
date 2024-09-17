@@ -209,16 +209,7 @@
             <img src="~/images/nobg.png" alt="Church Logo">
             <h4>Breakthrough</h4>
         </div>
-        <hr>
-        <!-- Profile Section -->
-        <div class="profile-section">
-            <img src="~/images/download.png" alt="Profile Picture" id="profileImage">
-
-            <!--Uploading Image is for settings only-->
-            @*<input type="file" id="profilePictureInput" accept="image/*">
-            <label for="profilePictureInput"><i class="fas fa-camera"></i>Upload Picture</label>*@
-            <h5>Hello @User.Identity.Name </h5>
-        </div>
+       
 
         <ul class="nav d-flex flex-column card">
             <li class="nav-item">
@@ -237,12 +228,6 @@
                 <a href="@Url.Action("Calendar", "Leader")" class="nav-link d-flex align-items-center nav-animate">
                     <i class="bi bi-calendar-event"></i>
                     <span>Calendar</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="Notifications" class="nav-link d-flex align-items-center nav-animate">
-                    <i class="bi bi-bell"></i>
-                    <span>Notifications</span>
                 </a>
             </li>
             <li class="nav-item">

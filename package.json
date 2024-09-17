@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "bootstrap-icons": "^1.11.3"
   }
 }
