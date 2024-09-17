@@ -172,14 +172,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DiscipleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeaderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-flaty.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -200,6 +204,11 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\bcfLogo.jpg" />
+    <Content Include="images\carousel.jpg" />
+    <Content Include="images\carousel2.jpg" />
+    <Content Include="images\carousel3.jpg" />
+    <Content Include="images\download.png" />
+    <Content Include="images\nobg.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -228,13 +237,30 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\LeaderDashboard.cshtml" />
-    <Content Include="Views\Account\DiscipleDashboard.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Shared\DiscipleLayout.cshtml" />
+    <Content Include="Views\Shared\LeaderLayout.cshtml" />
+    <Content Include="Views\Disciple\Dashboard.cshtml" />
+    <Content Include="Views\Disciple\Activities.cshtml" />
+    <Content Include="Views\Disciple\Calendar.cshtml" />
+    <Content Include="Views\Disciple\Notifications.cshtml" />
+    <Content Include="Views\Disciple\Settings.cshtml" />
+    <Content Include="Views\Leader\Activities.cshtml" />
+    <Content Include="Views\Leader\Calendar.cshtml" />
+    <Content Include="Views\Leader\Dashboard.cshtml" />
+    <Content Include="Views\Leader\Settings.cshtml" />
+    <Content Include="Views\Leader\Notifications.cshtml" />
+    <Content Include="Views\Leader\Logout.cshtml" />
+    <Content Include="Views\Disciple\Logout.cshtml" />
+    <Content Include="Views\Leader\Profile.cshtml" />
+    <Content Include="Views\Leader\Events.cshtml" />
+    <Content Include="Views\Leader\AddQuiz.cshtml" />
+    <Content Include="Views\Leader\EditQuiz.cshtml" />
+    <Content Include="Views\Leader\Message.cshtml" />
+    <Content Include="Views\Home\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

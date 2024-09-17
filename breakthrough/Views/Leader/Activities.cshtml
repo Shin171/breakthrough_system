@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Activities";
+    Layout = "~/Views/Shared/LeaderLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card mt-4 shadow-lg">
+                <div class="card-header text-center">
+                    <h2 class="mb-0">Activities</h2>
+                    <p class="justify-content-between">
+                        <a href="@Url.Action("AddQuiz", "Leader")" class="btn btn-primary mt-0">Add New Activity/Quiz</a>
+                    </p>
+
+                    <!-- Add table-responsive to make the table responsive on small screens -->
+                    <div class="table-responsive mw-100">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Type of Activity</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Row 1 -->
+                                <tr>
+                                    <td>Essay</td>
+                                    <td>Quiz</td>
+                                    <td>
+                                        <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#details1" aria-expanded="false" aria-controls="details1">
+                                            View Details &#9662; <!-- Dropdown Arrow -->
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr id="details1" class="collapse">
+                                    <td colspan="6">
+                                        <div class="card card-body">
+                                            <p><strong>Activity Title:</strong> asdadasdasdsaadasdadad</p>
+                                            <p><strong>Type of Activity:</strong> Quiz</p>
+                                            <p><strong>Date Created:</strong> 12/08/2024</p>
+                                            <p><strong>Date Given:</strong> 12/09/2024</p>
+                                            <p><strong>Due Date:</strong> 12/15/2024</p>
+                                            <a asp-action="Edit" class="btn btn-warning mb-1">Edit</a>
+                                            <a asp-action="Delete" class="btn btn-danger">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <hr />
+                                <!-- Row 2 -->
+                                <tr>
+                                    <td>Activity 2</td>
+                                    <td>Assignment</td>
+                                    <td>
+                                        <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#details2" aria-expanded="false" aria-controls="details2">
+                                            View Details &#9662; <!-- Dropdown Arrow -->
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr id="details2" class="collapse">
+                                    <td colspan="6">
+                                        <div class="card card-body">
+                                            <p><strong>Activity Title:</strong> Activity 2</p>
+                                            <p><strong>Type of Activity:</strong> Assignment</p>
+                                            <p><strong>Date Created:</strong> 11/08/2024</p>
+                                            <p><strong>Date Given:</strong> 11/09/2024</p>
+                                            <p><strong>Due Date:</strong> 11/12/2024</p>
+                                            <a asp-action="Edit" class="btn btn-warning mb-1">Edit</a>
+                                            <a asp-action="Delete" class="btn btn-danger">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Add more rows similarly -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

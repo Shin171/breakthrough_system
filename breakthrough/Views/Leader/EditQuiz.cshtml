@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "EditQuiz";
+    Layout = "~/Views/Shared/LeaderLayout.cshtml";
+}
+
+@model breakthrough.Models.QuizEditViewModel
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Edit Quiz</h2>
+                    <form asp-action="EditQuiz" method="post">
+                        <input type="hidden" asp-for="QuizId" />
+
+                        <div class="mb-3">
+                            <input id="floatingQuizTitle" class="form-control @(ViewData.ModelState["Title"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Title" placeholder="Enter Quiz Title" required />
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea id="floatingQuizDescription" class="form-control @(ViewData.ModelState["Description"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Description" placeholder="Enter Quiz Description" rows="4" required></textarea>
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="floatingQuestion" class="form-control @(ViewData.ModelState["Question"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Question" placeholder="Enter Question" required />
+                            @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="floatingOption1" class="form-control @(ViewData.ModelState["Option1"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Option1" placeholder="Enter Option 1" required />
+                            @Html.ValidationMessageFor(model => model.Option1, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="floatingOption2" class="form-control @(ViewData.ModelState["Option2"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Option2" placeholder="Enter Option 2" required />
+                            @Html.ValidationMessageFor(model => model.Option2, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="floatingOption3" class="form-control @(ViewData.ModelState["Option3"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Option3" placeholder="Enter Option 3" required />
+                            @Html.ValidationMessageFor(model => model.Option3, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="floatingOption4" class="form-control @(ViewData.ModelState["Option4"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Option4" placeholder="Enter Option 4" required />
+                            @Html.ValidationMessageFor(model => model.Option4, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="correctAnswer" class="form-label">Correct Answer</label>
+                            <select id="correctAnswer" class="form-control @(ViewData.ModelState["CorrectAnswer"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="CorrectAnswer" required>
+                                <option value="">Select the correct answer...</option>
+                                <option value="Option1">Option 1</option>
+                                <option value="Option2">Option 2</option>
+                                <option value="Option3">Option 3</option>
+                                <option value="Option4">Option 4</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.CorrectAnswer, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3"> @*Edit the calendar this is I left off*@
+                            <label for="StartDate" class="form-label">Start Date</label>
+                            <input id="StartDate" class="form-control @(ViewData.ModelState["StartDate"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="StartDate" type="date" required />
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="DueDate" class="form-label">Due Date</label>
+                            <input id="DueDate" class="form-control @(ViewData.ModelState["DueDate"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="DueDate" type="date" required />
+                            @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="@Url.Action("Activities", "Leader")" class="btn btn-secondary btn-lg">Back</a>
+                            <button class="btn btn-primary btn-lg" type="submit">Save Changes</button>
+                        </div>
+                    </form>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger mt-3" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

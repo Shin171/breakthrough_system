@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakthrough</title>
+    @Styles.Render("~/Content/bootstrap-flaty.css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" type="image/jpeg" href="~/images/bcfLogo.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        /* Custom styles for the sidebar */
+        #sidebar {
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            background-color: #ffffff; /* Changed to white */
+            padding-top: 30px;
+            transition: left 0.3s;
+            z-index: 1045;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+            #sidebar.shrink {
+                width: 80px; /* Shrinks sidebar to show only icons */
+            }
+
+            #sidebar.active {
+                left: 0;
+            }
+
+            #sidebar .nav-link {
+                color: #343a40; /* Dark text for better contrast */
+            }
+
+                #sidebar .nav-link.active {
+                    background-color: #007bff;
+                    color: #ffffff;
+                }
+
+                #sidebar .nav-link i {
+                    margin-right: 10px;
+                }
+
+            #sidebar.shrink .nav-link i {
+                margin-right: 0;
+            }
+
+            #sidebar.shrink .nav-link span {
+                display: none;
+            }
+
+            #sidebar .logo-section h4 {
+                font-size: 18px;
+                transition: opacity 0.3s;
+            }
+
+            #sidebar.shrink .logo-section h4 {
+                opacity: 0;
+            }
+
+
+        #content {
+            transition: margin-left 0.3s;
+            margin-left: 0;
+        }
+
+            #content.shrink {
+                margin-left: 80px;
+            }
+
+
+            #content.active {
+                margin-left: 250px;
+            }
+
+        /* Fixed sidebar toggle button */
+        .sidebar-toggle {
+            position: fixed;
+            left: 15px;
+            top: 15px;
+            z-index: 1050;
+        }
+
+        /* Logo section styles */
+        .logo-section {
+            text-align: center;
+            margin-bottom: 5px;
+            color: #343a40;
+        }
+
+            .logo-section img {
+                width: 60px;
+                height: 60px; /* Ensure height is equal to width */
+            }
+
+        /* Profile section styles */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #343a40;
+            padding: 0 15px;
+        }
+
+            .profile-section img {
+                border-radius: 50%;
+                height: 60px;
+                width: 60px;
+                object-fit: cover;
+                border: 2px solid #007bff;
+            }
+
+        #sidebar.shrink .profile-section {
+            display: none;
+        }
+
+        .profile-section input[type="file"] {
+            display: none;
+        }
+
+        .profile-section label {
+            cursor: pointer;
+            color: #007bff;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Adjust navbar height to align with fixed toggle button */
+        .navbar {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        /* Optional: Adjust footer to stay at the bottom */
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .body-content {
+            flex: 1;
+        }
+        .nav-item {
+            margin-bottom: 10px;
+            margin-top:10px;
+            justify-content: center;
+            margin-left:10px;
+            margin-right:10px;
+            
+        }
+
+        .nav-animate {
+            position: relative;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+            .nav-animate:hover {
+                color: #007bff; /* Change text color on hover */
+                transform: scale(1.05); /* Slight zoom effect */
+            }
+
+            .nav-animate:active {
+                transform: scale(0.95); /* Click animation with a scale effect */
+                transition: transform 0.1s ease-in;
+            }
+
+            /* Create a box around the element */
+            .nav-animate::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 2px solid transparent; /* Initially invisible */
+                transition: all 0.3s ease;
+            }
+
+            .nav-animate:hover::after {
+                border-color: #007bff; /* The border will appear on hover */
+                border-radius: 5px; /* Smooth rounded corners */
+            }
+
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Fixed Sidebar Toggle Button -->
+    <button class="btn btn-dark sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <img src="~/images/nobg.png" alt="Church Logo">
+            <h4>Breakthrough</h4>
+        </div>
+       
+
+        <ul class="nav d-flex flex-column card">
+            <li class="nav-item">
+                <a href="@Url.Action("Dashboard", "Leader")" class="nav-link d-flex align-items-center nav-animate">
+                    <i class="bi bi-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Activities", "Leader")" class="nav-link d-flex align-items-center nav-animate">
+                    <i class="bi bi-list-task"></i>
+                    <span>Activities</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Calendar", "Leader")" class="nav-link d-flex align-items-center nav-animate">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>Calendar</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Message", "Leader")" class="nav-link d-flex align-items-center nav-animate">
+                    <i class="bi bi-chat"></i>
+                    <span>Message</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Settings", "Leader")" class="nav-link d-flex align-items-center nav-animate">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+  
+    <div id="content" class="container-fluid body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-auto w-100">
+        <div class="container-fluid p-4" style="background-color: #f8f9fa;">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0 text-start">
+                    <h5 class="text-uppercase">About Breakthrough Church</h5>
+                    <p>
+                        Breakthrough Church is dedicated to building a strong community through faith, worship, and outreach programs. Join us for weekly services, volunteer opportunities, and much more.
+                    </p>
+                    <p>
+                        Location: Paso, Sta. Maria, Bulacan<br />
+                        Service Times: Sundays at 8:00 AM and 11:00 AM<br />
+                        Contact: breakthroughchurch.com | #
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                    <h5 class="text-uppercase">Follow Us</h5>
+                    <ul class="list-unstyled d-flex justify-content-start">
+                        <li class="mx-2">
+                            <a href="https://facebook.com" target="_blank" class="text-dark">
+                                <i class="fab fa-facebook fa-2x"></i>
+                            </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="https://instagram.com" target="_blank" class="text-dark">
+                                <i class="fab fa-instagram fa-2x"></i>
+                            </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="https://github.com" target="_blank" class="text-dark">
+                                <i class="fab fa-github fa-2x"></i>
+                            </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="https://youtube.com" target="_blank" class="text-dark">
+                                <i class="fab fa-youtube fa-2x"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            &copy; @DateTime.Now.Year Breakthrough Church System | All rights reserved
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Sidebar Toggle Functionality
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // Image Picker Functionality
+        const profileImage = document.getElementById('profileImage');
+        const profilePictureInput = document.getElementById('profilePictureInput');
+
+        profilePictureInput.addEventListener('change', function () {
+                const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                profileImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+            });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

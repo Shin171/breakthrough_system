@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/LeaderLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg">
+                <div class="card-header text-center bg-primary text-white">
+                    <h4 class="mb-0">Conversations</h4>
+                    <!-- Search Bar -->
+                    <div class="input-group mt-3">
+                        <input type="text" class="form-control" placeholder="Search users" id="searchUserInput">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" onclick="searchUser()">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conversations Table -->
+                <div class="card-body">
+                    <div class="table-responsive mw-100">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Last Message</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="conversationList">
+                                <!-- Row 1: Conversation with User 1 -->
+                                <tr>
+                                    <td>
+                                        <img src="~/images/user1.jpg" class="rounded-circle" width="40" alt="User 1">
+                                        <span class="ml-2">User 1</span>
+                                    </td>
+                                    <td>Last message at 9:10 AM</td>
+                                    <td>
+                                        <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#convDetails1" aria-expanded="false" aria-controls="convDetails1">
+                                            View Conversation &#9662;
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr id="convDetails1" class="collapse">
+                                    <td colspan="3">
+                                        <div class="card card-body">
+                                            <!-- Conversation Messages -->
+                                            <div id="conversationPanel1">
+                                                <div class="d-flex justify-content-start mb-4">
+                                                    <div class="img_cont_msg">
+                                                        <img src="~/images/user1.jpg" class="rounded-circle user_img_msg" alt="User 1">
+                                                    </div>
+                                                    <div class="msg_cotainer">
+                                                        Hello, how can I help you today?
+                                                        <span class="msg_time">9:10 AM, Today</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-end mb-4">
+                                                    <div class="msg_cotainer_send">
+                                                        Hi, I need help with my assignment.
+                                                        <span class="msg_time_send">9:12 AM, Today</span>
+                                                    </div>
+                                                    <div class="img_cont_msg">
+                                                        <img src="~/images/user2.jpg" class="rounded-circle user_img_msg" alt="User 2">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Input for sending new messages -->
+                                            <div class="input-group mt-3">
+                                                <input type="text" class="form-control" placeholder="Type a message" id="messageInput1">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="button" onclick="sendMessage('messageInput1')">Send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 2: Conversation with User 2 -->
+                                <tr>
+                                    <td>
+                                        <img src="~/images/user2.jpg" class="rounded-circle" width="40" alt="User 2">
+                                        <span class="ml-2">User 2</span>
+                                    </td>
+                                    <td>Last message at 8:45 AM</td>
+                                    <td>
+                                        <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#convDetails2" aria-expanded="false" aria-controls="convDetails2">
+                                            View Conversation &#9662;
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr id="convDetails2" class="collapse">
+                                    <td colspan="3">
+                                        <div class="card card-body">
+                                            <!-- Conversation Messages -->
+                                            <div id="conversationPanel2">
+                                                <div class="d-flex justify-content-start mb-4">
+                                                    <div class="img_cont_msg">
+                                                        <img src="~/images/user2.jpg" class="rounded-circle user_img_msg" alt="User 2">
+                                                    </div>
+                                                    <div class="msg_cotainer">
+                                                        Good morning!
+                                                        <span class="msg_time">8:45 AM, Today</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Input for sending new messages -->
+                                            <div class="input-group mt-3">
+                                                <input type="text" class="form-control" placeholder="Type a message" id="messageInput2">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="button" onclick="sendMessage('messageInput2')">Send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Add more rows similarly -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to handle message sending
+    function sendMessage(inputId) {
+        const messageInput = document.getElementById(inputId);
+        const messageText = messageInput.value.trim();
+
+        if (messageText === '') return;  // Don't send empty messages
+
+        const newMessage = `
+        <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+                ${messageText}
+                <span class="msg_time_send">Now</span>
+            </div>
+            <div class="img_cont_msg">
+                <img src="~/images/user2.jpg" class="rounded-circle user_img_msg" alt="User 2">
+            </div>
+        </div>`;
+
+        const conversationPanel = document.getElementById('conversationPanel' + inputId.slice(-1));
+        conversationPanel.innerHTML += newMessage;
+        messageInput.value = '';  // Clear input
+    }
+
+    // Function to search for users
+    function searchUser() {
+        const input = document.getElementById('searchUserInput').value.toLowerCase();
+        const conversationList = document.getElementById('conversationList');
+        const conversations = conversationList.getElementsByTagName('tr');
+
+        for (let i = 0; i < conversations.length; i++) {
+            const user = conversations[i].innerText.toLowerCase();
+            if (user.indexOf(input) > -1) {
+                conversations[i].style.display = "";
+            } else {
+                conversations[i].style.display = "none";
+            }
+        }
+    }
+</script>

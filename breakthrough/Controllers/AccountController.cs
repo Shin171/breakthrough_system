@@ -9,6 +9,10 @@ using MySql.Data.MySqlClient;
 using System.Web.Mvc;
 using breakthrough.Models;
 using System.Web.Helpers;
+using System.Net.Mail;
+using System.Net;
+using System.Web.Security;
+using System.ComponentModel.DataAnnotations;
 
 namespace breakthrough.Controllers
 {
@@ -47,14 +51,14 @@ namespace breakthrough.Controllers
 
                         if (emailCount > 0)
                         {
-                            ModelState.AddModelError("", "The email address is already in use. Please try an alternative!");
+                            ModelState.AddModelError("", "The email address is already in use.");
                             return View(model);
                         }
                     }
-
                     model.Password = HashPassword(model.Password);
 
-                    string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password, Role) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password, @Role)";
+
+                    string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password)";
                     using (var insertCmd = new MySqlCommand(insertQuery, connection))
                     {
                         connection.Open();
@@ -63,11 +67,14 @@ namespace breakthrough.Controllers
                         insertCmd.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
                         insertCmd.Parameters.AddWithValue("@Email", model.Email);
                         insertCmd.Parameters.AddWithValue("@Password", model.Password);
-                        insertCmd.Parameters.AddWithValue("@Role", model.Role);
+                        //insertCmd.Parameters.AddWithValue("@AcceptPolicy", model.AcceptPolicy = true);
+
+
 
                         insertCmd.ExecuteNonQuery();
                         connection.Close();
                     }
+
                 }
 
                 return RedirectToAction("Login");
@@ -75,6 +82,7 @@ namespace breakthrough.Controllers
 
             return View(model);
         }
+
 
         [HttpGet]
         public ActionResult Login()
@@ -100,7 +108,6 @@ namespace breakthrough.Controllers
                         {
                             if (reader.Read())
                             {
-                                // Set user session or cookie here
                                 string role = reader["Role"].ToString();
                                 connection.Close();
                                 return RedirectToAction("Dashboard", new { role });
@@ -109,10 +116,8 @@ namespace breakthrough.Controllers
                         connection.Close();
                     }
                 }
-
                 ModelState.AddModelError("", "Incorrect email or password. try again!");
             }
-
             return View(model);
         }
 
@@ -121,13 +126,14 @@ namespace breakthrough.Controllers
             // Render different views based on role
             if (role == "Leader")
             {
-                return View("LeaderDashboard");
+                return RedirectToAction("Dashboard", "Leader" );
             }
             else
             {
-                return View("DiscipleDashboard");
+                return RedirectToAction("Dashboard","Disciple");
             }
         }
+
 
         private string HashPassword(string password)
         {
@@ -142,6 +148,16 @@ namespace breakthrough.Controllers
                 return builder.ToString();
             }
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+
+
 
     }
 }

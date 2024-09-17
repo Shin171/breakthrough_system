@@ -1,0 +1,201 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/LeaderLayout.cshtml";
+}
+<style>
+    .profile-section {
+        display: flex;
+        align-items: center;
+        margin-top: 17px;
+    }
+
+    #profileImage {
+        object-fit: cover;
+        width: 24px; /* Same size as the notification icon */
+        height: 24px;
+    }
+
+    .right-side {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    /* Flexbox for Search Bar */
+    .search-container {
+        display: flex;
+        flex-grow: 1; /* Ensures the search bar grows with the container */
+        max-width: 550px; /* Sets a reasonable maximum size */
+        height: 40px; /* Explicit height to keep the search bar consistent */
+    }
+
+    .search-bar {
+        flex-grow: 1; /* Search bar takes up available space */
+        min-width: 150px; /* Minimum width for small screens */
+        height: 100%; /* Ensure the input takes the full height of its container */
+        box-sizing: border-box; /* Make sure padding is included within the height */
+    }
+
+    .search-button {
+        flex-shrink: 0; /* Prevents the button from shrinking */
+        margin-left: 1px;
+        height: 100%; /* Ensure the button has the same height as the input */
+        padding: 0 5px; /* Optional padding to control button width */
+    }
+</style>
+
+<!-- Search Functionality and Notification -->
+<div class="row mb-0 mt-0 ms-5">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+        <!-- Search Bar -->
+        <form class="form-inline d-flex me-2 search-container">
+            <input class="form-control mr-sm-1 search-bar" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-secondary ms-1 my-2 my-sm-0 search-button" type="submit">Search</button>
+        </form>
+
+        <!-- Right Side: Notification and Profile -->
+        <div class="right-side">
+            <!-- Notification Icon -->
+            <div class="dropdown me-0">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownNotification" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-bell"></i>
+                </a>
+
+                <!-- Dropdown Card for Notifications -->
+                <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="dropdownNotification" style="width: 300px;">
+                    <li class="mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">New Message</h6>
+                                <p class="card-text">You have a new message from Poi.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Event Reminder</h6>
+                                <p class="card-text">Don't forget the upcoming meeting at 3 PM.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary w-100">View All Notifications</button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="profile-section dropdown">
+                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownProfile" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="~/images/download.png" alt="Profile Picture" id="profileImage" class="rounded-circle">
+                </a>
+
+                <!-- Dropdown Profile Options -->
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfile">
+                    <li><a class="dropdown-item" href="#">View Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card mt-4 shadow-lg">
+                <div class="card-header text-b text-center">
+                    <h2 class="mb-0">Welcome to the Leader Dashboard, <span id="username">LEADER NAME</span></h2>
+                </div>
+                <div class="card-body bg-light">
+
+                    <!-- Image Carousel Section -->
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="~/images/carousel3.jpg" class="d-block w-100 rounded" alt="Church Image 1">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/images/carousel2.jpg" class="d-block w-100 rounded" alt="Church Image 2">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/images/carousel.jpg" class="d-block w-100 rounded" alt="Church Image 3">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Course Progress Section -->
+                    <div class="row mb-3">
+                        <div class="col">
+                            <h5 class="text-primary">Batchs Progress</h5>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60% Complete</div>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">Batch 1 - Completed</li>
+                                <li class="list-group-item">Batch 2 - 60% Complete</li>
+                                <li class="list-group-item">Batch 3 - Upcoming</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Calendar Section -->
+                    <div class="row mb-3">
+                        <div class="col">
+                            <h5 class="text-primary">Calendar</h5>
+                            <div id="calendar">
+                                <!-- Calendar integration can be done here, such as using a JavaScript calendar library -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Weekly Assignments Section -->
+                    <div class="row mb-3">
+                        <div class="col">
+                            <h5 class="text-primary">Weekly Assignments</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item">Assignment 1 - Due: Monday</li>
+                                <li class="list-group-item">Assignment 2 - Due: Wednesday</li>
+                                <li class="list-group-item">Assignment 3 - Due: Friday</li>
+                            </ul>
+                            <div class="text-right mt-2">
+                                <button class="btn btn-outline-primary">View All Assignments</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Upcoming Events or Sessions Section -->
+                    <div class="row mb-3">
+                        <div class="col">
+                            <h5 class="text-primary">Upcoming Events/Sessions</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item">Session 1 - Location: Branch A - Date: August 25</li>
+                                <li class="list-group-item">Event 2 - Location: Branch B - Date: September 5</li>
+                                <li class="list-group-item">Session 3 - Location: Branch C - Date: September 15</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
