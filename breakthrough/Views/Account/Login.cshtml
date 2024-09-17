@@ -24,20 +24,27 @@
                         <div class="d-grid mb-2">
                             <button class="btn btn-primary btn-lg" type="submit">Login</button>
                         </div>
-                        <div class="d-grid mb-3">
+                        <div class="row justify-content-center my-1">
+                            <div class="col-lg-12">
+                                <div class="d-flex align-items-center">
+                                    <hr class="flex-grow-1">
+                                    <span class="mx-3">or</span>
+                                    <hr class="flex-grow-1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid mb-2">
                             <a href="@Url.Action("GoogleLogin", "Account")" class="btn btn-success btn-lg border">
                                 <i class="fab fa-google me-2"></i>Connect with Google
                             </a>
                         </div>
+                        <hr />
+                        <div class="d-grid gap-2">
+                            <a href="@Url.Action("ForgotPassword", "Account")" class="btn btn-link">Forgot Password?</a>
+                            <a href="@Url.Action("Register", "Account")" class="btn btn-lg btn-info">Create New Account</a>
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     </form>
-
-                    <hr />
-
-                    <div class="d-grid gap-2">
-                        <a href="@Url.Action("ForgotPassword", "Account")" class="btn btn-link">Forgot Password?</a>
-                        <a href="@Url.Action("Register", "Account")" class="btn btn-lg btn-info">Create New Account</a>
-                    </div>
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

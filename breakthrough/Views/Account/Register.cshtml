@@ -9,7 +9,8 @@
         <div class="col-md-5">
             <div class="card mt-5">
                 <div class="card-body shadow-lg">
-                    <h2 class="text-center mb-4">Create an Account</h2>
+                    <h2 class="text-center mb-1">Create an Account</h2>
+                    <p class="text-center mb-4">Create an Account to Register in Explanatory Class</p>
                     <form asp-action="Register" method="post">
                         <div class="mb-3">
                             <input id="floatingName" class="form-control @(ViewData.ModelState["Name"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="Name" placeholder="Enter Fullname" required />
@@ -42,61 +43,78 @@
                             @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                         </div>
 
-                        @*Checkbox for Privacy Policy
-                        <div class="form-group">
-                            <input type="checkbox" id="acceptPolicy" name="AcceptPolicy" required>
-                            <label for="acceptPolicy">
-                                I have read and accept the
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#dataPolicyModal">Data Policy</a>.
-                            </label>
-                        </div>*@
-
-                        <div class="d-grid mb-2">
+                        <div class="d-grid mb-0">
                             <button class="btn btn-primary btn-lg" type="submit">Register</button>
                         </div>
 
-
-                        @*Your existing modal for displaying the privacy policy
-                        <div class="modal fade" id="dataPolicyModal" tabindex="-1" aria-labelledby="dataPolicyModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="dataPolicyModalLabel">Data Policy</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Your data policy content
-                                        <p>This is the data policy of our website. Please read it carefully.</p>
-                                        <ul>
-                                            <li>We collect personal information that you provide to us directly.</li>
-                                            <li>Your data is stored securely and is not shared with third parties without your consent.</li>
-                                            <li>You have the right to access and update your information.</li>
-                                            <li>For more information, please contact our support team.</li>
-                                        </ul>
-                                        <p>By using our services, you agree to this data policy.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </div>
+                        <div class="row justify-content-center my-1">
+                            <div class="col-lg-12">
+                                <div class="d-flex align-items-center">
+                                    <hr class="flex-grow-1">
+                                    <span class="mx-3">or</span>
+                                    <hr class="flex-grow-1">
                                 </div>
                             </div>
                         </div>
-                    </form>*@
 
-                    <!-- Connect with Google Button -->
-                    <div class="d-grid mb-3">
-                        <a href="@Url.Action("GoogleLogin", "Account")" class="btn btn-success btn-lg border">
-                            <i class="fab fa-google me-2"></i>Connect with Google
-                        </a>
-                    </div>
-                    
-                    <hr />
+                        <!-- Connect with Google Button -->
+                        <div class="d-grid mb-0">
+                            <a href="@Url.Action("GoogleLogin", "Account")" class="btn btn-success btn-lg border">
+                                <i class="fab fa-google me-2"></i>Connect with Google
+                            </a>
+                        </div>
 
-                    <div class="d-grid">
-                        <a href="@Url.Action("Login", "Account")" class="btn btn-info btn-lg">Already have an account?</a>
-                    </div>
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row justify-content-center my-1">
+                            <div class="col-lg-12">
+                                <div class="d-flex align-items-center">
+                                    <hr class="flex-grow-1">
+                                    <span class="mx-3">Already have an Account?</span>
+                                    <hr class="flex-grow-1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            <a href="@Url.Action("Login", "Account")" class="btn btn-info btn-lg">Login</a>
+                        </div>
+
+                        <!-- Terms and Conditions at the bottom -->
+                        <div class="text-center mt-3">
+                            <p>
+                                By creating an account, you agree to our
+                                <a href="#" style="color: lightblue;" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a>.
+                            </p>
+                        </div>
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Terms and Conditions Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to our website. By accessing or using our services, you agree to the following terms and conditions:</p>
+                <ul>
+                    <li>You must provide accurate information when creating an account.</li>
+                    <li>Your account is personal and should not be shared with others.</li>
+                    <li>We reserve the right to terminate accounts that violate our policies.</li>
+                    <li>All content you submit must comply with our guidelines.</li>
+                    <li>We may modify these terms at any time, and such modifications will be effective immediately.</li>
+                </ul>
+                <p>Please review these terms carefully before using our services. If you do not agree to these terms, do not use our services.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

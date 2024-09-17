@@ -1,8 +1,19 @@
-﻿ @{
+﻿@{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/LeaderLayout.cshtml";
 }
 
+
+<!-- Search Functionality -->
+<div class="row mb-2 mt-3 ms-5">
+    <div class="col">
+        <form class="form-inline d-flex">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 250px;">
+            <button class="btn btn-secondary ms-1 my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        
+    </div>
+</div>
 
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -12,16 +23,6 @@
                     <h2 class="mb-0">Welcome to the Leader Dashboard, <span id="username">LEADER NAME</span></h2>
                 </div>
                 <div class="card-body bg-light">
-
-                    <!-- Search Functionality -->
-                    <div class="row mb-3">
-                        <div class="col">
-                            <form class="form-inline d-flex">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-secondary ms-1 my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </div>
 
                     <!-- Image Carousel Section -->
                     <div class="row mb-4">
