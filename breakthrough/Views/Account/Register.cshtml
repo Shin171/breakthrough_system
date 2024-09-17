@@ -18,9 +18,11 @@
                         </div>
 
                         <div class="mb-3">
-                            <input id="floatingBirthdate" class="form-control @(ViewData.ModelState["Birthdate"]?.Errors.Count > 0 ? "is-invalid" : "")" type="date" name="Birthdate" placeholder="Birthday" required />
+                            <input id="floatingBirthdate" class="form-control @(ViewData.ModelState["Birthdate"]?.Errors.Count > 0 ? "is-invalid" : "")"
+                                   type="date" name="Birthdate" placeholder="Birthday" max="@DateTime.Now.ToString("yyyy-MM-dd")" required />
                             @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
                         </div>
+
 
                         <div class="mb-3">
                             <input id="floatingPhoneNumber" class="form-control @(ViewData.ModelState["PhoneNumber"]?.Errors.Count > 0 ? "is-invalid" : "")" type="text" name="PhoneNumber" placeholder="Enter Phone number" required />
