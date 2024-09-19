@@ -1,9 +1,7 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Calendar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <!-- Include FullCalendar CSS and JS -->
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet" />
@@ -15,6 +13,14 @@
             <div class="card mt-4 shadow-lg">
                 <div class="card-header text-center">
                     <h2 class="mb-0">Calendar of Events</h2>
+
+                    @* Informational text about church events *@
+                    <p class="text-muted mt-3">
+                        Welcome to our church's event calendar! Here, you can view all the upcoming events, meetings, and activities that are happening in our church community.
+                        Our calendar is regularly updated with important dates and events organized by our leaders, including worship services, community outreach programs, and special gatherings.
+                        We encourage you to stay engaged and participate in these activities to strengthen our community and grow in faith together.
+                        If you have any questions or need further information about any event, please reach out to our church office or the event organizer.
+                    </p>
 
                     @* Only show Create New Event button to leaders *@
                     @if (User.IsInRole("Leader"))
@@ -33,15 +39,16 @@
 </div>
 
 <!-- Initialize FullCalendar and load events from the database -->
-<script>document.addEventListener('DOMContentLoaded', function () {
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             events: '/Leader/GetEvents',  // This will fetch events from your controller action
-            eventClick: function(info) {
+            eventClick: function (info) {
                 alert('Event: ' + info.event.title + '\nDescription: ' + info.event.extendedProps.description);
             }
         });
         calendar.render();
-    });</script>
-
+    });
+</script>

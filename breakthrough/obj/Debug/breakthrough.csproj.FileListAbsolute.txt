@@ -220,3 +220,12 @@ C:\Users\Denden\source\repos\breakthrough_system\breakthrough\obj\Debug\breakthr
 C:\Users\Denden\source\repos\breakthrough_system\breakthrough\obj\Debug\breakthrough.dll
 C:\Users\Denden\source\repos\breakthrough_system\breakthrough\obj\Debug\breakthrough.pdb
 C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\breakthrough.dll.config
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\CaptchaMvc.dll
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\CaptchaMvc.pdb
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\CaptchaMvc.xml
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\BCrypt.Net-Next.dll
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\BCrypt.Net-Next.xml
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\SendGrid.dll
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\StarkbankEcdsa.dll
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\SendGrid.pdb
+C:\Users\Denden\source\repos\breakthrough_system\breakthrough\bin\SendGrid.xml

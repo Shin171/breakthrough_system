@@ -13,6 +13,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Web.Security;
 using System.ComponentModel.DataAnnotations;
+using Org.BouncyCastle.Crypto.Generators;
 
 namespace breakthrough.Controllers
 {
@@ -38,7 +39,6 @@ namespace breakthrough.Controllers
                     ModelState.AddModelError("", "Passwords do not match.");
                     return View(model);
                 }
-
                 using (var connection = new MySqlConnection(_dbConnection))
                 {
                     string checkQuery = "SELECT COUNT(*) FROM accounts WHERE Email = @Email";
@@ -57,7 +57,6 @@ namespace breakthrough.Controllers
                     }
                     model.Password = HashPassword(model.Password);
 
-
                     string insertQuery = "INSERT INTO accounts (Name, Birthdate, PhoneNumber, Email, Password) VALUES (@Name, @Birthdate, @PhoneNumber, @Email, @Password)";
                     using (var insertCmd = new MySqlCommand(insertQuery, connection))
                     {
@@ -67,10 +66,7 @@ namespace breakthrough.Controllers
                         insertCmd.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
                         insertCmd.Parameters.AddWithValue("@Email", model.Email);
                         insertCmd.Parameters.AddWithValue("@Password", model.Password);
-                        //insertCmd.Parameters.AddWithValue("@AcceptPolicy", model.AcceptPolicy = true);
-
-
-
+                       
                         insertCmd.ExecuteNonQuery();
                         connection.Close();
                     }
@@ -95,44 +91,66 @@ namespace breakthrough.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Connect to the database and get the user
                 using (var connection = new MySqlConnection(_dbConnection))
                 {
-                    string query = "SELECT * FROM accounts WHERE Email = @Email AND Password = @Password";
+                    string query = "SELECT * FROM accounts WHERE Email = @Email";
                     using (var cmd = new MySqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@Email", model.Email);
-                        cmd.Parameters.AddWithValue("@Password", HashPassword(model.Password));
-
                         connection.Open();
-                        using (var reader = cmd.ExecuteReader())
+                        cmd.Parameters.AddWithValue("@Email", model.Email);
+
+                        var reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
                         {
-                            if (reader.Read())
+                            string storedHashedPassword = reader["Password"].ToString();
+
+                            // Verify the password entered by the user with the stored password
+                            if (VerifyPassword(model.Password, storedHashedPassword))
                             {
-                                string role = reader["Role"].ToString();
-                                connection.Close();
-                                return RedirectToAction("Dashboard", new { role });
+                                // If the password is correct, authenticate the user
+                                FormsAuthentication.SetAuthCookie(model.Email, false);
+                                TempData["AccountCreated"] = true;
+                                // Optionally, redirect to the dashboard or any other page
+                                return RedirectToAction("Dashboard");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Invalid password.");
                             }
                         }
-                        connection.Close();
+                        else
+                        {
+                            ModelState.AddModelError("", "User not found.");
+                        }
                     }
                 }
-                ModelState.AddModelError("", "Incorrect email or password. try again!");
             }
+
+            // If something goes wrong (validation or authentication fails), return the same view with errors
             return View(model);
         }
 
-        public ActionResult Dashboard(string role)
+        private bool VerifyPassword(string enteredPassword, string storedHashedPassword)
         {
-            // Render different views based on role
-            if (role == "Leader")
-            {
-                return RedirectToAction("Dashboard", "Leader" );
-            }
-            else
-            {
-                return RedirectToAction("Dashboard","Disciple");
-            }
+            // Hash the entered password and compare it to the stored hash
+            return BCrypt.Net.BCrypt.Verify(enteredPassword, storedHashedPassword);
         }
+
+        public ActionResult Dashboard(/*string role*/)
+        {
+            //// Render different views based on role
+            //if (role == "Leader")
+            //{
+                return RedirectToAction("Dashboard", "Leader");
+            //}
+            //else
+            //{
+                //return RedirectToAction("Dashboard", "Disciple");
+            //}
+        }
+
 
 
         private string HashPassword(string password)

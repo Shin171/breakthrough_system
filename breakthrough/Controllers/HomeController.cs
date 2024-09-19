@@ -23,7 +23,6 @@ namespace breakthrough.Controllers
                         PhoneNumber VARCHAR(15) NOT NULL,
                         Email VARCHAR(100) UNIQUE NOT NULL,
                         Password VARCHAR(256) NOT NULL
-                        
                     )", conn);
                 cmd.ExecuteNonQuery();
 

@@ -27,19 +27,15 @@ namespace breakthrough.Models
 
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
-        [StringLength(100, MinimumLength = 4, ErrorMessage = "Password must be at least 6 characters long.")]
+        [StringLength(100, MinimumLength = 4, ErrorMessage = "Password must be at least 4 characters long.")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Confirm Password is required.")]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-        [Required(ErrorMessage = "Role is required.")]
-        public string Role { get; set; }
-
-        [Required(ErrorMessage = "You must accept the data policy.")]
-        public bool AcceptPolicy { get; set; }
+        public bool EmailVerified { get; set; } // Tracks whether email is verified
+        public string VerificationToken { get; set; } // Unique token for email verification
 
 
     }
