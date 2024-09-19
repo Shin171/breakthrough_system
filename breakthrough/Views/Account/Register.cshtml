@@ -9,6 +9,13 @@
         <div class="col-md-5">
             <div class="card mt-5">
                 <div class="card-body shadow-lg">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @TempData["SuccessMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
                     <h2 class="text-center mb-1">Create an Account</h2>
                     <p class="text-center mb-4">Create an Account to Register in Explanatory Class</p>
 
@@ -88,7 +95,6 @@
                                 <a href="#" style="color: lightblue;" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a>.
                             </p>
                         </div>
-
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     </form>
                 </div>
@@ -123,30 +129,44 @@
     </div>
 </div>
 
+
+<!-- Success Modal -->
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="successModalLabel">Account Created</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Your account has been successfully created!
+                Your account has been successfully created! 
+                Waiting for the confirmation of your Account.
+               
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-primary" id="redirectToLogin">OK</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Include Bootstrap and jQuery -->
 @section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        // Check if the account was successfully created and trigger the modal
-        $(document).ready(function() {
+        $(document).ready(function () {
+            // Check if the account was successfully created
             var accountCreated = @Html.Raw(Json.Encode(TempData["AccountCreated"] ?? false));
+
             if (accountCreated) {
+                // Show the success modal
                 $('#successModal').modal('show');
+
+                // Redirect to the login page when "OK" is clicked
+                $('#redirectToLogin').on('click', function () {
+                    window.location.href = '@Url.Action("Login", "Account")';
+                });
             }
         });
     </script>

@@ -72,8 +72,8 @@ namespace breakthrough.Controllers
                     }
 
                 }
-
-                return RedirectToAction("Login");
+                TempData["AccountCreated"] = true;
+                return View();
             }
 
             return View(model);
@@ -87,44 +87,54 @@ namespace breakthrough.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(User model)
         {
             if (ModelState.IsValid)
             {
-                // Connect to the database and get the user
-                using (var connection = new MySqlConnection(_dbConnection))
+                try
                 {
-                    string query = "SELECT * FROM accounts WHERE Email = @Email";
-                    using (var cmd = new MySqlCommand(query, connection))
+                    // Connect to the database and get the user
+                    using (var connection = new MySqlConnection(_dbConnection))
                     {
-                        connection.Open();
-                        cmd.Parameters.AddWithValue("@Email", model.Email);
-
-                        var reader = cmd.ExecuteReader();
-
-                        if (reader.Read())
+                        string query = "SELECT * FROM accounts WHERE Email = @Email";
+                        using (var cmd = new MySqlCommand(query, connection))
                         {
-                            string storedHashedPassword = reader["Password"].ToString();
+                            connection.Open();
+                            cmd.Parameters.AddWithValue("@Email", model.Email);
 
-                            // Verify the password entered by the user with the stored password
-                            if (VerifyPassword(model.Password, storedHashedPassword))
+                            using (var reader = cmd.ExecuteReader())
                             {
-                                // If the password is correct, authenticate the user
-                                FormsAuthentication.SetAuthCookie(model.Email, false);
-                                TempData["AccountCreated"] = true;
-                                // Optionally, redirect to the dashboard or any other page
-                                return RedirectToAction("Dashboard");
+                                if (reader.Read())
+                                {
+                                    string storedHashedPassword = reader["Password"].ToString();
+
+                                    // Verify the password entered by the user with the stored password
+                                    if (VerifyPassword(model.Password, storedHashedPassword))
+                                    {
+                                        // Password is correct, redirect to the Leader's Dashboard
+                                        return RedirectToAction("Dashboard", "Leader");
+                                    }
+                                    else
+                                    {
+                                        // Password is incorrect
+                                        ModelState.AddModelError("", "Invalid password.");
+                                    }
+                                }
+                                else
+                                {
+                                    // Email not found in the database
+                                    ModelState.AddModelError("", "User not found.");
+                                }
                             }
-                            else
-                            {
-                                ModelState.AddModelError("", "Invalid password.");
-                            }
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "User not found.");
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    // Handle any unexpected exceptions (e.g., database connection issues)
+                    ModelState.AddModelError("", "An error occurred while processing your request.");
+                    // Optionally log the error: LogError(ex); // You can implement a logging method
                 }
             }
 
@@ -132,24 +142,31 @@ namespace breakthrough.Controllers
             return View(model);
         }
 
-        private bool VerifyPassword(string enteredPassword, string storedHashedPassword)
+
+
+        public bool VerifyPassword(string enteredPassword, string storedHashedPassword)
         {
-            // Hash the entered password and compare it to the stored hash
-            return BCrypt.Net.BCrypt.Verify(enteredPassword, storedHashedPassword);
+            // Hash the entered password using the same SHA256 method
+            string hashedEnteredPassword = HashPassword(enteredPassword);
+
+            // Compare the hashed entered password with the stored hashed password
+            return hashedEnteredPassword == storedHashedPassword;
         }
 
-        public ActionResult Dashboard(/*string role*/)
-        {
-            //// Render different views based on role
-            //if (role == "Leader")
-            //{
-                return RedirectToAction("Dashboard", "Leader");
-            //}
-            //else
-            //{
-                //return RedirectToAction("Dashboard", "Disciple");
-            //}
-        }
+
+
+        //public ActionResult Dashboard(/*string role*/)
+        //{
+        //    //// Render different views based on role
+        //    //if (role == "Leader")
+        //    //{
+        //        return RedirectToAction("Dashboard", "Leader");
+        //    //}
+        //    //else
+        //    //{
+        //        //return RedirectToAction("Dashboard", "Disciple");
+        //    //}
+        //}
 
 
 
