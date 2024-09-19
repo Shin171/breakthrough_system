@@ -1,0 +1,55 @@
+﻿/* Desktop media query */
+@media only screen and (min-width: 1024px) {
+    /* Styles for desktop screens */
+    body {
+        font-size: 16px;
+        background-color: #f5f5f5;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sidebar {
+        width: 250px;
+    }
+}
+
+/* Tablet media query */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    /* Styles for tablet screens */
+    body {
+        font-size: 14px;
+        background-color: #eaeaea;
+    }
+
+    .navbar {
+        display: block;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+}
+
+/* Mobile media query */
+@media only screen and (max-width: 767px) {
+    /* Styles for mobile screens */
+    body {
+        font-size: 12px;
+        background-color: #ffffff;
+    }
+
+    .navbar {
+        display: block;
+    }
+
+    .sidebar {
+        display: none; /* Hide sidebar on mobile */
+    }
+
+    .content {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "DiscipleProgress";
+    Layout = "~/Views/Shared/LeaderLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card mt-4 shadow-lg">
+                <div class="card-header text-center">
+                    <h2 class="mb-0">Disciple Progress</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Add table-responsive to make the table responsive on small screens -->
+                    <div class="table-responsive mw-100">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Disciple Name</th>
+                                    <th>Completed Lessons</th>
+                                    <th>Quiz Scores</th>
+                                    <th>Progress</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Example Disciple 1 -->
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>5/7</td>
+                                    <td>80%</td>
+                                    <td>
+                                        <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#progress1" aria-expanded="false" aria-controls="progress1">
+                                            View Progress &#9662; <!-- Dropdown Arrow -->
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr id="progress1" class="collapse">
+                                    <td colspan="6">
+                                        <div class="card card-body">
+                                            <p><strong>Completed Lessons:</strong> 5/7</p>
+                                            <p><strong>Quiz Average Score:</strong> 80%</p>
+                                            <p><strong>Latest Activity:</strong> Essay Quiz - 85%</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <hr />
+                                <!-- Example Disciple 2 -->
+                                <tr>
+                                    <td>Jane Smith</td>
+                                    <td>3/7</td>
+                                    <td>70%</td>
+                                    <td>
+                                        <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#progress2" aria-expanded="false" aria-controls="progress2">
+                                            View Progress &#9662; <!-- Dropdown Arrow -->
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr id="progress2" class="collapse">
+                                    <td colspan="6">
+                                        <div class="card card-body">
+                                            <p><strong>Completed Lessons:</strong> 3/7</p>
+                                            <p><strong>Quiz Average Score:</strong> 70%</p>
+                                            <p><strong>Latest Activity:</strong> Multiple Choice Quiz - 75%</p>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Add more rows for disciples similarly -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

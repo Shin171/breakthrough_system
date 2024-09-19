@@ -1,8 +1,75 @@
 ﻿
+
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/LeaderLayout.cshtml";
 }
 
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card mt-4 shadow-lg">
+                <div class="card-header text-center">
+                    <h2 class="mb-0">Your Profile</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
+                        <!-- Profile Image Section -->
+                        <div class="text-center mb-3">
+                            <img src="~/images/download.png" alt="Profile Image" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" />
+                            <div class="mt-2">
+                                <label class="btn btn-secondary">
+                                    Change Profile Picture
+                                    <input type="file" name="ProfileImage" class="form-control-file" style="display: none;" />
+                                </label>
+                            </div>
+                        </div>
 
+                        <!-- Name -->
+                        <div class="form-group mb-3">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter your name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
 
+                        <!-- Email -->
+                        <div class="form-group mb-3">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter your email" type="email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <!-- Role (Read-only) -->
+                        <div class="form-group mb-3">
+                            <label asp-for="Role" class="control-label"></label>
+                            <input asp-for="Role" class="form-control" readonly />
+                            <small class="form-text text-muted">Role cannot be changed</small>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group mb-3">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" placeholder="Enter a new password (optional)" type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <!-- Update Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="card mt-4 shadow-lg">
+                <div class="card-header text-center">
+                    <h3>Recent Activities</h3>
+                </div>
+                <div class="card-body">
+                    <p>Here you can display the user's recent activities or quizzes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

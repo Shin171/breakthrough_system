@@ -1,43 +1,56 @@
-﻿@model breakthrough.Models.Activity
+﻿@*@model breakthrough.Models.Activity*@
 
 @{
     ViewBag.Title = "Add New Quiz/Activity";
     Layout = "~/Views/Shared/LeaderLayout.cshtml";
-    var today = DateTime.Now.ToString("yyyy-MM-dd"); // Gets today's date in the required format
+    var today = DateTime.Now.ToString("yyyy-MM-dd");
 }
 
-<h2>Add New Quiz/Activity</h2>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card mt-4 shadow-lg">
+                <div class="card-header text-center">
+                    <h2 class="mb-0">Add New Quiz/Activity</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AddQuiz" method="post">
+                        <div class="form-group mb-3">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter title for the activity" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
 
-<form asp-action="AddQuiz" method="post">
-    <div class="form-group">
-        <label asp-for="Title" class="control-label"></label>
-        <input asp-for="Title" class="form-control" placeholder="Enter title for the activity" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+                        <div class="form-group mb-3">
+                            <label asp-for="ActivityType" class="control-label"></label>
+                            <select asp-for="ActivityType" class="form-control">
+                                <option>Quiz</option>
+                                <option>Essay</option>
+                                <!-- Add more activity types as needed -->
+                            </select>
+                            <span asp-validation-for="ActivityType" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="DateGiven" class="control-label"></label>
+                            <input asp-for="DateGiven" class="form-control" type="date" min="@today" />
+                            <small id="dateGivenHelp" class="form-text text-muted">Please select the date this activity was given. Past dates are not allowed.</small>
+                            <span asp-validation-for="DateGiven" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="DueDate" class="control-label"></label>
+                            <input asp-for="DueDate" class="form-control" type="date" min="@today" />
+                            <small id="dueDateHelp" class="form-text text-muted">Please select the due date for this activity. Past dates are not allowed.</small>
+                            <span asp-validation-for="DueDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Create Activity</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="ActivityType" class="control-label"></label>
-        <select asp-for="ActivityType" class="form-control">
-            <option>Quiz</option>
-            <option>Essay</option>
-            <!-- Add other activity types here -->
-        </select>
-        <span asp-validation-for="ActivityType" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="DateGiven" class="control-label"></label>
-        <!-- Add 'min' attribute to restrict past dates for DateGiven -->
-        <input asp-for="DateGiven" class="form-control" type="date" aria-describedby="dateGivenHelp" min="@today" />
-        <small id="dateGivenHelp" class="form-text text-muted">Please select the date this activity was given. Past dates are not allowed.</small>
-        <span asp-validation-for="DateGiven" class="text-danger"></span>
-    </div>
-    <div class="form-group mb-2">
-        <label asp-for="DueDate" class="control-label"></label>
-        <!-- Add 'min' attribute to restrict past dates for DueDate -->
-        <input asp-for="DueDate" class="form-control" type="date" aria-describedby="dueDateHelp" min="@today" />
-        <small id="dueDateHelp" class="form-text text-muted">Please select the due date for this activity. Past dates are not allowed.</small>
-        <span asp-validation-for="DueDate" class="text-danger"></span>
-    </div>
-    <div class="d-grid">
-        <button type="submit" class="btn btn-primary">Create Activity</button>
-    </div>
-</form>
+</div>

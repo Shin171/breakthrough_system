@@ -53,16 +53,16 @@ namespace breakthrough.Controllers
                 //    )";
                 //cmd.ExecuteNonQuery();
 
-                cmd.CommandText = @"
-                    CREATE TABLE if not exists Activities (
-                        ActivityId INT AUTO_INCREMENT PRIMARY KEY,
-                        Title VARCHAR(100) NOT NULL,
-                        ActivityType VARCHAR(50) NOT NULL, -- 
-                        DateCreated DATETIME NOT NULL,
-                        DateGiven DATETIME NULL,
-                        DueDate DATETIME NULL
-                     );";
-                cmd.ExecuteNonQuery();
+                //cmd.CommandText = @"
+                //    CREATE TABLE if not exists Activities (
+                //        ActivityId INT AUTO_INCREMENT PRIMARY KEY,
+                //        Title VARCHAR(100) NOT NULL,
+                //        ActivityType VARCHAR(50) NOT NULL, -- 
+                //        DateCreated DATETIME NOT NULL,
+                //        DateGiven DATETIME NULL,
+                //        DueDate DATETIME NULL
+                //     );";
+                //cmd.ExecuteNonQuery();
             }
 
             return View();

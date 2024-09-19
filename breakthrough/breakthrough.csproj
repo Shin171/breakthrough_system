@@ -191,7 +191,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -213,6 +212,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Responsive.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -269,11 +269,11 @@
     <Content Include="Views\Leader\Logout.cshtml" />
     <Content Include="Views\Disciple\Logout.cshtml" />
     <Content Include="Views\Leader\Profile.cshtml" />
-    <Content Include="Views\Leader\Events.cshtml" />
     <Content Include="Views\Leader\AddQuiz.cshtml" />
     <Content Include="Views\Leader\EditQuiz.cshtml" />
     <Content Include="Views\Leader\Message.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
+    <Content Include="Views\Leader\DiscipleProgress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

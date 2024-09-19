@@ -34,8 +34,7 @@ namespace breakthrough.Models
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-        public bool EmailVerified { get; set; } // Tracks whether email is verified
-        public string VerificationToken { get; set; } // Unique token for email verification
+        
 
 
     }

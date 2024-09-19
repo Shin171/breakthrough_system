@@ -6,6 +6,7 @@
     <title>Breakthrough</title>
     @Styles.Render("~/Content/bootstrap-flaty.css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Responsive.css" rel="stylesheet" />
     <link rel="icon" type="image/jpeg" href="~/images/bcfLogo.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
@@ -147,13 +148,13 @@
         .body-content {
             flex: 1;
         }
+
         .nav-item {
             margin-bottom: 10px;
-            margin-top:10px;
+            margin-top: 10px;
             justify-content: center;
-            margin-left:10px;
-            margin-right:10px;
-            
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         .nav-animate {
@@ -190,8 +191,6 @@
                 border-color: #007bff; /* The border will appear on hover */
                 border-radius: 5px; /* Smooth rounded corners */
             }
-
-
     </style>
 
 </head>
@@ -237,9 +236,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="@Url.Action("Settings", "Leader")" class="nav-link d-flex align-items-center nav-animate">
-                    <i class="bi bi-gear"></i>
-                    <span>Settings</span>
+                <a href="@Url.Action("DiscipleProgress", "Leader")" class="nav-link d-flex align-items-center nav-animate">
+                    <i class="bi bi-backpack"></i>
+                    <span>Disciples</span>
                 </a>
             </li>
         </ul>
@@ -253,7 +252,7 @@
     </div>
 
     <footer class="bg-light text-center text-lg-start mt-auto w-100">
-        <div class="container-fluid p-4" style="background-color: #f8f9fa;">
+        <div class="container p-4" style="background-color: #f8f9fa;">
             <div class="row">
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0 text-start">
                     <h5 class="text-uppercase">About Breakthrough Church</h5>
