@@ -274,6 +274,7 @@
     <Content Include="Views\Leader\Message.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
     <Content Include="Views\Leader\DiscipleProgress.cshtml" />
+    <Content Include="Views\Home\Helpdesk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

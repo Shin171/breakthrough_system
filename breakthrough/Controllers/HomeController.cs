@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Runtime.InteropServices;
 using System.Web.Mvc;
 
 namespace breakthrough.Controllers
@@ -71,6 +72,11 @@ namespace breakthrough.Controllers
         public ActionResult Calendar()
         {
             ViewBag.Message = "Your application description page.";
+            return View();
+        }
+
+        public ActionResult Helpdesk()
+        {
             return View();
         }
 
